@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Activation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8f8;
+    }
+
+    .box {
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #004D40;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #004D40;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00362C;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Enter Activation Code</h2>
+    <input type="text" id="code" placeholder="Enter your code">
+    <button onclick="checkCode()">Activate Course</button>
+    <p class="error" id="error"></p>
+  </div>
+
+  <script>
+  function checkCode() {
+    const correctCode = "AUDIO-2025";
+    const userCode = document.getElementById("code").value;
+
+    if (userCode === correctCode) {
+      localStorage.setItem("courseActivated", "true");
+      window.location.href = "course.html";
+    } else {
+      document.getElementById("error").innerText = "Invalid activation code";
+    }
+  }
+</script>
+
+</body>
+</html>

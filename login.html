@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Signup - EN-AVM Academy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .auth-section {
+    display: flex;
+    width: 90%;
+    max-width: 900px;
+    height: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  /* ===== Left Image ===== */
+  /* .auth-image { */
+    /* flex: 1; */
+    /* background: url('images/image.jpg') center/cover no-repeat; اسم الصورة هنا */
+    /* position: relative; */
+  /* } */
+  /* .auth-image::after { */
+    /* content: ''; */
+    /* position: absolute; */
+    /* inset: 0; */
+    /* background: rgba(0,0,0,0.35); overlay خفيف */
+  /* } */
+
+  /* ===== Right Card ===== */
+  .auth-card {
+    flex: 1;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #e0f0ff, #ffffff);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+}
+
+.auth-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #003d80;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-card input,
+.auth-card select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #bcd3ff;
+    font-size: 16px;
+    background: #f8fbff;
+    transition: 0.3s;
+}
+
+.auth-card input:focus,
+.auth-card select:focus {
+    border-color: #004587;
+    box-shadow: 0 0 8px rgba(0, 69, 135, 0.35);
+    outline: none;
+}
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+   .btn {
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+  .btn-login { background-color: #004587; color: #fff; }
+  .btn-login:hover { background-color: #002D57; }
+  .btn-signup { background-color: #00BCD4; color: #fff; }
+  .btn-signup:hover { background-color: #0097A7; }
+
+  .toggle-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    color: #004587;
+  }
+  .toggle-link:hover { text-decoration: underline; }
+
+  .error-message {
+    color: red;
+    font-size: 0.85em;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .auth-section { flex-direction: column; height: auto; }
+    .auth-image { height: 200px; }
+    .auth-card { padding: 30px 20px; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="auth-section">
+    <!-- <div class="auth-image"></div> -->
+
+    <div class="auth-card">
+      <!-- Login Form -->
+      <div id="login-form">
+        <h2 data-en="Login" data-ar="تسجيل الدخول">Login</h2>
+        <input type="email" id="login-email" placeholder="Email" data-en-placeholder="Email" data-ar-placeholder="البريد الإلكتروني">
+        <input type="password" id="login-password" placeholder="Password" data-en-placeholder="Password" data-ar-placeholder="كلمة المرور">
+        <button class="btn btn-login" id="login-btn" data-en="Login" data-ar="تسجيل الدخول">Login</button>
+        <div class="error-message" id="login-error"></div>
+        <p class="toggle-link" id="show-signup" data-en="Don't have an account? Sign Up" data-ar="ليس لديك حساب؟ إنشاء حساب">Don't have an account? Sign Up</p>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signup-form" style="display:none;">
+        <h2 data-en="Sign Up" data-ar="إنشاء حساب">Sign Up</h2>
+        <input type="text" id="signup-name" placeholder="Full Name" data-en-placeholder="Full Name" data-ar-placeholder="الاسم الكامل">
+        <input type="email" id="signup-email" placeholder="Email" data-en-placeholder="Email" data-ar-placeholder="البريد الإلكتروني">
+  <div style="position:relative;">
+  <input type="password" id="signup-password" placeholder="Password" style="width:100%; padding-right:35px;">
+  <i class="fas fa-eye togglePassword" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer;"></i>
+</div>
+  <select id="user-role">
+          <!-- <option value="client" data-en="Client" data-ar="عميل">Client</option> -->
+          <!-- <option value="admin" data-en="Admin" data-ar="مسؤول">Admin</option> -->
+        </select>
+        <button class="btn btn-signup" id="signup-btn" data-en="Sign Up" data-ar="إنشاء حساب">Sign Up</button>
+        <div class="error-message" id="signup-error"></div>
+        <p class="toggle-link" id="show-login" data-en="Already have an account? Login" data-ar="لديك حساب؟ تسجيل الدخول">Already have an account? Login</p>
+      </div>
+
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+
+
+<!-- Firebase scripts -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+
+<script>
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD_S3qWEjoTd1rD0i7JurMtDPIPtgV3dM4",
+  authDomain: "clinic-website-71cf6.firebaseapp.com",
+  projectId: "clinic-website-71cf6",
+  storageBucket: "clinic-website-71cf6.firebasestorage.app",
+  messagingSenderId: "897109443664",
+  appId: "1:897109443664:web:531dc1ab2108c30df93d55",
+  measurementId: "G-Q0HNXTCPFH"
+};
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore(); 
+
+  const loginForm = document.getElementById('login-form');
+  const signupForm = document.getElementById('signup-form');
+  const loginBtn = document.getElementById('login-btn');
+  const signupBtn = document.getElementById('signup-btn');
+  const loginError = document.getElementById('login-error');
+  const signupError = document.getElementById('signup-error');
+  const showSignup = document.getElementById('show-signup');
+  const showLogin = document.getElementById('show-login');
+  const langSelect = document.getElementById('language-select');
+  const elements = document.querySelectorAll('[data-en], [data-ar]');
+  const body = document.body;
+
+  showSignup.onclick = () => { loginForm.style.display='none'; signupForm.style.display='block'; };
+  showLogin.onclick = () => { signupForm.style.display='none'; loginForm.style.display='block'; };
+
+  const setLanguage = (lang) => {
+    body.setAttribute('dir', lang==='ar'?'rtl':'ltr');
+    elements.forEach(el=>{
+      const text = el.getAttribute(`data-${lang}`);
+      if(text) el.textContent=text;
+      const ph = el.getAttribute(`data-${lang}-placeholder`);
+      if(ph) el.placeholder=ph;
+    });
+    langSelect.value=lang;
+    localStorage.setItem('userLanguage', lang);
+  };
+  setLanguage(localStorage.getItem('userLanguage')||'en');
+  langSelect.addEventListener('change',(e)=>setLanguage(e.target.value));
+
+signupBtn.onclick = () => {
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const role = document.getElementById('user-role').value;
+    const username = document.getElementById('signup-name').value;
+    signupError.textContent = '';
+
+    auth.createUserWithEmailAndPassword(email,password)
+      .then(userCredential => {
+          const user = userCredential.user;
+          // حفظ البيانات في Firestore
+          db.collection('users').doc(user.uid).set({
+              username: username,
+              role: role
+          })
+          .then(() => {
+              window.location.href = role === 'admin' ? 'admin_dashboard.html' : 'Home.html';
+          });
+      })
+      .catch(err=>{ signupError.textContent = err.message; });
+};
+
+
+// loginBtn.onclick = () => {
+//     const email = document.getElementById('login-email').value;
+//     const password = document.getElementById('login-password').value;
+//     loginError.textContent = '';
+
+//     auth.signInWithEmailAndPassword(email,password)
+//       .then(userCredential => {
+//           const user = userCredential.user;
+//           // جلب الـ role من Firestore
+//           db.collection('users').doc(user.uid).get()
+//             .then(doc => {
+//                 if(doc.exists){
+//                     const role = doc.data().role;
+//                     window.location.href = role === 'admin' ? 'admin_dashboard.html' : 'Home.html';
+//                 } else {
+//                     loginError.textContent = "User role not found!";
+//                 }
+//             });
+//       })
+//       .catch(err => { loginError.textContent = err.message; });
+// };
+
+loginBtn.onclick = () => {
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
+  loginError.textContent = '';
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      const user = userCredential.user;
+      console.log('User UID:', user.uid); // Should print UID
+
+db.collection('artifacts')
+  .doc('default-app-id')
+  .collection('users')
+  .doc(user.uid)
+  .get()
+  .then(doc => {
+    if (doc.exists) {
+      const role = doc.data().role;
+      window.location.href = role === 'admin' ? 'admin_dashboard.html' : 'Home.html';
+    } else {
+      loginError.textContent = "User role not found!";
+    }
+  });
+
+    //   db.collection('users').doc(user.uid).get()
+    //     .then(doc => {
+    //       console.log('Doc exists:', doc.exists, 'Data:', doc.data()); // Debug
+    //       if (doc.exists) {
+    //         const role = doc.data().role;
+    //         window.location.href = role === 'admin' ? 'admin_dashboard.html' : 'Home.html';
+    //       } else {
+    //         loginError.textContent = "User role not found!";
+    //       }
+    //     }).catch(err => {
+    //       console.log('Firestore error:', err);
+    //       loginError.textContent = err.message;
+    //     });
+
+    })
+    .catch(err => { loginError.textContent = err.message; });
+};
+
+const passwordInput = document.getElementById('login-password');
+document.querySelectorAll('.togglePassword').forEach(icon => {
+  icon.addEventListener('click', () => {
+    const input = icon.previousElementSibling;
+    const type = input.type === 'password' ? 'text' : 'password';
+    input.type = type;
+    icon.classList.toggle('fa-eye');
+    icon.classList.toggle('fa-eye-slash');
+  });
+});
+</script>
+</body>
+</html>

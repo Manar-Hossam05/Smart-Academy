@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EN-AVM Academy - Professional E-Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #004587;
+            --secondary-color: #00BCD4;
+            --accent-color: #FF8A65;
+            --text-color: #444444;
+            --light-bg: #F8F8F8;
+            --white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; margin:0; padding:0; }
+        body { font-family: 'Georgia', serif; line-height:1.7; color: var(--text-color); background-color: var(--white); overflow-x:hidden; }
+        body.rtl { direction: rtl; text-align: right; }
+
+        .container { width:90%; max-width:1200px; margin:0 auto; padding:0 15px; }
+        .section-padding { padding:80px 0; }
+        .section-title, .feature-item h3, .logo, .hero-section h1, .btn { font-family:'Playfair Display','Palatino Linotype','Book Antiqua',Palatino,serif; font-weight:700; }
+        .section-title { text-align:center; margin-bottom:50px; font-size:2.5em; color:var(--primary-color); }
+
+        a { text-decoration:none; color:var(--primary-color); transition: color 0.3s; }
+        ul { list-style:none; }
+
+        .btn { display:inline-block; padding:12px 25px; border-radius:5px; font-weight:700; text-align:center; cursor:pointer; border:none; letter-spacing:0.5px; transition: all 0.3s; }
+        .btn-primary { background-color: var(--primary-color); color: var(--white); }
+        .btn-primary:hover { background-color:#002D57; }
+        .btn-secondary { background-color:transparent; color: var(--primary-color); border:2px solid var(--primary-color); }
+
+        .main-header { background-color: rgba(255,255,255,0.85); box-shadow:0 2px 5px rgba(0,0,0,0.08); padding:20px 0; position: sticky; top:0; z-index:1000; backdrop-filter: blur(10px); transition: all 0.3s; }
+        .main-header.scrolled { padding:10px 0; background-color: rgba(255,255,255,0.95); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+
+        .header-content { display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-size:1.8em; font-weight:700; color:var(--primary-color); transition: all 0.3s; }
+        .logo:hover { color: var(--secondary-color); transform: scale(1.05); }
+        .main-nav ul { display:flex; gap:25px; align-items:center; }
+        .main-nav a { font-weight:500; padding:5px 0; font-family:'Georgia', serif; }
+        .main-nav a:hover { color: var(--secondary-color); }
+
+        .lang-switcher select { padding:8px 15px; border-radius:5px; border:1px solid var(--primary-color); background-color: var(--white); color: var(--primary-color); font-size:1em; cursor:pointer; appearance:none; background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23004587" d="M7 10l5 5 5-5z"/></svg>'); background-repeat:no-repeat; background-position:right 10px center; padding-right:30px; }
+        body.rtl .lang-switcher select { background-position:left 10px center; padding-left:30px; padding-right:15px; }
+
+        .hero-section { background-image: linear-gradient(to right, rgba(0,69,135,0.85), rgba(0,188,212,0.75)), url('images/hero_audiology.jpg'); background-size: cover; background-position:center; color:var(--white); padding:150px 0; text-align:center; }
+        .hero-section h1 { font-size:3.8em; margin-bottom:25px; text-shadow:2px 2px 5px rgba(0,0,0,0.7); }
+        .hero-section p { font-size:1.3em; margin-bottom:50px; font-weight:400; font-family:'Georgia', serif; }
+        .hero-buttons a { margin:0 15px; }
+
+        .course-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:30px; }
+        .course-card { background-color: var(--white); border:1px solid #E0E0E0; border-radius:10px; overflow:hidden; transition: all 0.3s; }
+        .course-card:hover { box-shadow:0 10px 25px rgba(0,0,0,0.15); transform: translateY(-8px); }
+        .card-image { height:160px; display:flex; justify-content:center; align-items:center; font-size:4em; color: var(--white); background-color: var(--secondary-color); }
+        .card-content { padding:25px; }
+        .course-title { font-size:1.4em; min-height:60px; margin-bottom:10px; color: var(--primary-color); font-weight:700; }
+        .course-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; color:#777; font-size:0.9em; }
+        .course-meta .price { font-weight:700; color: var(--primary-color); }
+        .btn-enroll, .btn-add-cart { width:100%; padding:12px; font-size:1.05em; text-transform:uppercase; margin-top:15px; }
+
+        .features-section { background-color: var(--light-bg); }
+        .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+        .feature-item { background-color: var(--white); padding:30px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.08); text-align:center; transition: all 0.3s; border-top:5px solid var(--secondary-color); }
+        .feature-item:hover { transform: translateY(-8px); box-shadow:0 15px 35px rgba(0,0,0,0.2); }
+        .feature-icon { font-size:2.5em; color: var(--white); width:80px; height:80px; line-height:80px; text-align:center; background-color: var(--primary-color); border-radius:50%; margin:0 auto 25px auto; box-shadow:0 0 0 8px rgba(0,69,135,0.1); transition: all 0.3s; }
+        .feature-item:hover .feature-icon { background-color: var(--accent-color); transform: scale(1.05); }
+        .feature-item h3 { color: var(--primary-color); font-size:1.5em; margin-bottom:15px; }
+
+        .main-footer { background-color: var(--primary-color); color: var(--white); padding-top:50px; }
+        .footer-grid { display:flex; justify-content:space-between; gap:30px; }
+        .footer-col { flex:1; }
+        .footer-col h4 { border-bottom:2px solid var(--secondary-color); padding-bottom:10px; margin-bottom:20px; font-size:1.2em; }
+        .footer-col a { color: var(--white); opacity:0.8; padding:5px 0; display:block; }
+        .footer-col a:hover { opacity:1; color: var(--accent-color); }
+        .footer-bottom { padding:20px 0; border-top:1px solid rgba(255,255,255,0.1); text-align:center; }
+
+        @media (max-width:992px){.main-nav{display:block;}.header-content{flex-wrap:wrap;}.main-nav ul{flex-direction:column;gap:15px;width:100%;text-align:center;margin-top:15px;display:flex;}.hero-section h1{font-size:3em;}.footer-grid{flex-direction:column;text-align:center;}.footer-col{margin-bottom:30px;}.social-links{text-align:center;}}
+        @media (max-width:768px){.section-padding{padding:50px 0;}.hero-section{padding:100px 0;}.course-grid{grid-template-columns:1fr;}}
+
+        .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.offer-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border-top: 5px solid var(--secondary-color);
+}
+
+.offer-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.18);
+}
+
+.offer-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.offer-card h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.offer-card p {
+    font-size: 0.95em;
+    color: #666;
+    line-height: 1.6;
+}
+/* Animation */
+.offer-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.offer-card:nth-child(1) { animation-delay: 0.1s; }
+.offer-card:nth-child(2) { animation-delay: 0.25s; }
+.offer-card:nth-child(3) { animation-delay: 0.4s; }
+.offer-card:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.offer-card:hover .offer-icon {
+    background-color: var(--accent-color);
+    transform: rotate(6deg) scale(1.08);
+    transition: 0.3s ease;
+}
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="container header-content">
+        <a href="#" class="logo" data-en="EN-AVM Academy" data-ar="أكاديمية EN-AVM">EN-AVM Academy</a>
+        <nav class="main-nav">
+            <ul>
+                <!-- <li><a href="#" data-en="Home" data-ar="الرئيسية">Home</a></li> -->
+               <li><a href="about.html" data-en="About" data-ar="من نحن">About</a></li>              
+                 <li><a id = "myAccount"href="#" data-en="My Account" data-ar="حسابي">My Account</a></li>
+                <li class="lang-switcher">
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="#" class="btn btn-primary" id="auth-button" style="padding:8px 15px; font-size:0.9em; margin-left:15px;" data-en="Login / Register" data-ar="تسجيل الدخول / إنشاء حساب">Login / Register</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero-section">
+    <!-- About Section -->
+<section id="about-section" class="about-section section-padding" style="display:none; background-color:#c5c9ce;color:#004587;">
+    <div class="container">
+        <h2 data-en="About Us" data-ar="من نحن">About Us</h2>
+        <p data-en="About Prof. Dr. Ebtessam Nada" 
+           data-ar="هذه المنصة تقدم دورات وورش عمل احترافية في مجال السمعيات لتعزيز مهاراتك.">
+           This platform provides professional audiology courses and workshops to enhance your skills.
+        </p>
+        <a href="#" id="close-about" class="btn btn-secondary" data-en="Close" data-ar="إغلاق">Close</a>
+    </div>
+</section>
+    <div class="container">
+        <h1 data-en="Prof Dr.Ebtessam Nada Hearing & Balance Academy" data-ar="أكاديمية أ.د. ابتسام ندى للسمع والتوازن">Prof Dr.Ebtessam Nada Hearing & Balance Academy</h1>
+        <p data-en="Excellence in professional Audiovestibular medicine" data-ar="التميز في طب السمعيات والدهليز الاحترافي">Excellence in professional Audiovestibular medicine</p>
+        <div class="hero-buttons">
+            <a href="workshops.html" class="btn btn-secondary" data-en="Free Workshops" data-ar="ورش عمل مجانية">Free Workshops</a>
+        </div>
+    </div>
+</section>
+
+ <section class="offers-section section-padding">
+    <div class="container">
+        <h2 class="section-title" data-en="What We Offer" data-ar="ماذا نقدم">What We Offer</h2>
+
+        <div class="offers-grid">
+
+            <div class="offer-card">
+                <div class="offer-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3 data-en="Professional Training" data-ar="تدريب احترافي">
+                    Professional Training
+                </h3>
+                <p data-en="Specialized training programs in audiology and balance disorders."
+                   data-ar="برامج تدريبية متخصصة في السمعيات واضطرابات التوازن.">
+                   Specialized training programs in audiology and balance disorders.
+                </p>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 data-en="Expert Workshops" data-ar="ورش عمل متخصصة">
+                    Expert Workshops
+                </h3>
+                <p data-en="Hands-on workshops led by experienced professionals."
+                   data-ar="ورش عمل تطبيقية يقدمها خبراء متخصصون.">
+                   Hands-on workshops led by experienced professionals.
+                </p>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3 data-en="Certified Courses" data-ar="دورات معتمدة">
+                    Certified Courses
+                </h3>
+                <p data-en="Accredited courses with certificates recognized by professionals."
+                   data-ar="دورات معتمدة بشهادات معترف بها مهنيًا.">
+                   Accredited courses with certificates recognized by professionals.
+                </p>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 data-en="Continuous Support" data-ar="دعم مستمر">
+                    Continuous Support
+                </h3>
+                <p data-en="Ongoing academic and technical support throughout your learning journey."
+                   data-ar="دعم أكاديمي وتقني مستمر طوال رحلة التعلم.">
+                   Ongoing academic and technical support throughout your learning journey.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="features-section section-padding" id="features-section">
+    <div class="container">
+        <h2 class="section-title" data-en="Why Choose Us?" data-ar="لماذا تختارنا؟">Why Choose Us?</h2>
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-item">
+                <i class="fas fa-user-tie feature-icon" style="background-color:#004587;"></i>
+                <h3 data-en="Specialized Expertise" data-ar="خبرة متخصصة">Specialized Expertise</h3>
+                <p data-en="We are the first platform dedicated exclusively to audiology training, providing trusted content." data-ar="نحن أول منصة مخصصة حصرياً لتدريب السمعيات، ونوفر محتوى موثوقاً.">We are the first platform dedicated exclusively to audiology training, providing trusted content.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-item">
+                <i class="fas fa-chalkboard-teacher feature-icon" style="background-color:#00BCD4;"></i>
+                <h3 data-en="Practical Workshops" data-ar="ورش عملية">Practical Workshops</h3>
+                <p data-en="Hands-on workshops and real case studies to enhance your skills." data-ar="ورش عملية ودراسات حالة حقيقية لتعزيز مهاراتك.">Hands-on workshops and real case studies to enhance your skills.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-item">
+                <i class="fas fa-certificate feature-icon" style="background-color:#FF8A65;"></i>
+                <h3 data-en="Certification" data-ar="شهادات معتمدة">Certification</h3>
+                <p data-en="Get accredited certificates after completing each course, recognized by professionals." data-ar="احصل على شهادات معتمدة بعد إتمام كل دورة، ومعترف بها من قبل المتخصصين.">Get accredited certificates after completing each course, recognized by professionals.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h4 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+            <ul>
+                <li><a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a></li>
+                <li><a href="#" data-en="Terms of Use" data-ar="شروط الاستخدام">Terms of Use</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p data-en="&copy; 2025 ES.Audiology. All Rights Reserved." data-ar="&copy; 2025 ES.Audiology. جميع الحقوق محفوظة.">&copy; 2025 ES.Audiology. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyD_S3qWEjoTd1rD0i7JurMtDPIPtgV3dM4",
+  authDomain: "clinic-website-71cf6.firebaseapp.com",
+  projectId: "clinic-website-71cf6",
+  storageBucket: "clinic-website-71cf6.firebasestorage.app",
+  messagingSenderId: "897109443664",
+  appId: "1:897109443664:web:531dc1ab2108c30df93d55",
+  measurementId: "G-Q0HNXTCPFH"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+const hiddenSections = [document.getElementById('courses-list'), document.getElementById('features-section')];
+const langSelect = document.getElementById('language-select');
+const elements = document.querySelectorAll('[data-en],[data-ar]');
+const body = document.body;
+
+function handleLogin(){
+    window.location.href = 'login.html';
+}
+
+function handleLogout(){
+    auth.signOut().then(()=> updateAuthState(localStorage.getItem('userLanguage')||'en'));
+}
+
+function updateAuthState(lang){
+    const authButton = document.getElementById('auth-button');
+    const isLoggedIn = !!auth.currentUser;
+    if(isLoggedIn){
+        authButton.textContent = lang==='ar' ? 'تسجيل الخروج' : 'Logout';
+        authButton.onclick = handleLogout;
+        hiddenSections.forEach(sec=>sec.style.display='block');
+    } else {
+        authButton.textContent = lang==='ar' ? 'تسجيل الدخول / إنشاء حساب' : 'Login / Register';
+        authButton.onclick = handleLogin;
+        hiddenSections.forEach(sec=>sec.style.display='none');
+    }
+}
+
+function setLanguage(lang){
+    body.className = lang==='ar'?'rtl':'';
+    elements.forEach(el=>{
+        if(lang==='ar' && el.dataset.ar) el.textContent = el.dataset.ar;
+        else if(el.dataset.en) el.textContent = el.dataset.en;
+    });
+    localStorage.setItem('userLanguage', lang);
+}
+
+langSelect.addEventListener('change', e => setLanguage(e.target.value));
+auth.onAuthStateChanged(()=> updateAuthState(localStorage.getItem('userLanguage')||'en'));
+
+setLanguage(localStorage.getItem('userLanguage')||'en');
+</script>
+<script>
+const aboutLink = document.getElementById('about-link');
+const aboutSection = document.getElementById('about-section');
+const closeAbout = document.getElementById('close-about');
+
+aboutLink.addEventListener('click', e => {
+    e.preventDefault(); // تمنع الصفحة من التحرك لفوق
+    aboutSection.style.display = 'block';
+    aboutSection.scrollIntoView({behavior: 'smooth'});
+});
+
+closeAbout.addEventListener('click', e => {
+    e.preventDefault();
+    aboutSection.style.display = 'none';
+});
+</script>
+  <script>
+  const myAccBtn = document.getElementById("myAccount");
+
+  myAccBtn.addEventListener("click", () => {
+    window.location.href = "profile.html";
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const myAccBtn = document.getElementById("myAccount");
+
+    if (myAccBtn) {
+        myAccBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            window.location.href = "profile.html";
+        });
+    }
+});
+</script>
+
+</body>
+</html>

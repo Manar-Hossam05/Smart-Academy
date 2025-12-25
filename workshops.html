@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Workshops</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+:root {
+    --primary-color: #004466;
+    --secondary-color: #00aaff;
+    --accent-color: #ffdc73;
+    --exclusive-color: #ff4444;
+    --text-color: #2c3e50;
+    --light-bg: #f0f8ff;
+    --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; line-height: 1.6; background-color: var(--light-bg); color: var(--text-color); }
+
+.container { width: 90%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
+.section-padding { padding: 100px 0; }
+
+.section-title { text-align: center; margin-bottom: 60px; font-size: 2.8em; color: var(--primary-color); font-weight: 700; position: relative; }
+.section-title::after { content: ''; width: 80px; height: 4px; background: var(--accent-color); position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+
+.workshop-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 50px 0; }
+
+.workshop-card { width: 320px; padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); text-align: center; transition: box-shadow 0.3s ease; }
+.workshop-card:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+
+.free-card { background-color: #e0f7ff; border: 2px solid #00aaff; color: #004466; }
+.paid-card { background-color: #004466; color: white; border: 2px solid #ff4444; }
+
+h3 { margin-bottom: 15px; font-size: 1.6em; font-weight: 700; }
+
+.btn { display: inline-block; padding: 12px 25px; border-radius: 8px; font-weight: 600; text-decoration: none; margin-top: 15px; cursor: pointer; width: 100%; }
+.btn-primary { background-color: #004466; color: white; }
+.btn-primary:hover { background-color: #006699; }
+.btn-exclusive { background-color: #ff4444; color: white; }
+.btn-exclusive:hover { background-color: #cc3333; }
+
+.currency-switcher { display: flex; justify-content: flex-end; align-items: center; margin-bottom: 30px; padding-right: 15px; }
+.currency-switcher select { padding: 10px 15px; border-radius: 6px; border: 1px solid #ccc; background-color: var(--white); font-size: 1em; cursor: pointer; outline: none; }
+
+p { font-size: 1em; }
+</style>
+</head>
+
+<body>
+
+<section class="workshops-section section-padding">
+  <div class="container">
+    <h2 class="section-title">Upcoming Professional Audiology Workshops</h2>
+
+    <!-- <div class="currency-switcher"> -->
+      <!-- <select id="currency-select" onchange="updatePrices()"> -->
+        <!-- <option value="USD">دولار ($)</option> -->
+        <!-- <option value="EGP">مصري (LE)</option> -->
+      <!-- </select> -->
+    <!-- </div> -->
+
+    <div class="workshop-grid">
+      <!-- Free Card -->
+      <div class="workshop-card free-card">
+        <h3>Upcoming Free Workshop</h3>
+        <p>Stay tuned for our upcoming free workshop.</p>
+        <a href="#" class="btn btn-primary">Watch Now</a>
+      </div>
+
+      <!-- Paid Card -->
+      <div class="workshop-card paid-card">
+        <h3>Exclusive Paid Workshop</h3>
+        <p>Coming soon! Unlock premium content and expert tips.</p>
+        <a href="#" class="btn btn-exclusive" onclick="showPaymentCode()">Book Spot</a>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 80px; color: var(--primary-color); font-weight: 600; font-size: 1.1em;">
+      For business inquiries, contact info@esaudiology.com
+    </p>
+  </div>
+</section>
+
+<script>
+const EXCHANGE_RATE = 40.8;
+
+function updatePrices() {
+    const currencySelect = document.getElementById('currency-select').value;
+    const priceTags = document.querySelectorAll('.price-tag');
+    priceTags.forEach(tag => {
+        if (tag.classList.contains('free-tag')) return;
+
+        const usdPrice = parseFloat(tag.getAttribute('data-usd'));
+        const egpPrice = parseFloat(tag.getAttribute('data-egp'));
+
+        if (currencySelect === 'EGP') {
+            const finalPriceEGP = egpPrice || (usdPrice * EXCHANGE_RATE).toFixed(2);
+            tag.textContent = `LE ${finalPriceEGP}`;
+        } else {
+            tag.textContent = `$${usdPrice.toFixed(2)}`;
+        }
+    });
+}
+
+// --------- توليد كود Instapay فريد ---------
+function generatePaymentCode() {
+    const prefix = "IPA"; 
+    const randomCode = Math.floor(100000 + Math.random() * 900000);
+    return prefix + randomCode;
+}
+
+function showPaymentCode() {
+    const code = generatePaymentCode();
+    alert("Your Instapay Code: " + code);
+}
+</script>
+<!-- Paid Card -->
+<div class="workshop-card paid-card">
+  <h3>Exclusive Paid Workshop</h3>
+  <p>Coming soon! Unlock premium content and expert tips.</p>
+  <a href="#" class="btn btn-exclusive" onclick="showPersistentPaymentCode()">Book Spot</a>
+</div>
+
+<script>
+// توليد كود Instapay فريد
+function generatePaymentCode() {
+    const prefix = "IPA"; 
+    const randomCode = Math.floor(100000 + Math.random() * 900000);
+    return prefix + randomCode;
+}
+
+// توليد كود دائم لكل مستخدم
+function showPersistentPaymentCode() {
+    let code = localStorage.getItem('instapayCode');
+    if (!code) {
+        code = generatePaymentCode();
+        localStorage.setItem('instapayCode', code);
+    }
+    alert("Your Instapay Code: " + code);
+}
+</script>
+
+</body>
+</html>
