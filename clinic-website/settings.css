@@ -1,0 +1,264 @@
+:root {
+    --bg-light: #f4f7fe;
+    --primary: #4318ff;
+    --text-dark: #1b254b;
+    --text-gray: #a3aed0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--bg-light);
+    direction: rtl;
+}
+
+.app-container { display: flex; min-height: 100vh; }
+
+/* السايد بار النحيف */
+.main-sidebar {
+    width: 80px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-left: 1px solid #e0e5f2;
+}
+
+.primary-nav a {
+    color: var(--text-gray);
+    font-size: 20px;
+    margin: 20px 0;
+    display: block;
+    transition: 0.3s;
+}
+
+.primary-nav a.active { color: var(--primary); }
+
+/* محتوى الإعدادات الرئيسي */
+.settings-wrapper { flex: 1; padding: 40px; }
+
+.settings-header h1 { color: var(--text-dark); font-size: 24px; margin-bottom: 30px; }
+
+.settings-content { display: flex; gap: 40px; }
+
+/* القائمة الجانبية الصغيرة */
+.settings-menu { width: 200px; }
+
+.settings-menu a {
+    display: block;
+    padding: 12px 0;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.settings-menu a.active { color: var(--primary); }
+.settings-menu .delete-acc { color: #ee5d50; margin-top: 20px; }
+
+/* كارت البيانات الأبيض */
+.settings-details { flex: 1; }
+
+.detail-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.edit-btn {
+    background: #f4f7fe;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f4f7fe;
+}
+
+.profile-summary img { width: 60px; height: 60px; border-radius: 50%; }
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.info-item label { color: var(--text-gray); font-size: 13px; display: block; margin-bottom: 5px; }
+.info-item p { margin: 0; color: var(--text-dark); font-weight: 700; 
+}
+.avatar-upload {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.avatar-upload img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f4f7fe;
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #4318ff;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    border: 2px solid white;
+}
+.update-pass-btn {
+    background: #4318ff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-family: 'Cairo';
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: fit-content;
+}
+
+.update-pass-btn:hover {
+    background: #3311cc;
+    transform: translateY(-2px);
+}
+
+.security-section {
+    margin-top: 20px;
+}
+.direct-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e5f2; /* لون رمادي خفيف */
+    border-radius: 8px;
+    font-family: 'Cairo';
+    font-size: 14px;
+    color: #1b254b;
+    outline: none;
+    transition: 0.3s;
+    background-color: #f8f9ff; /* خلفية فاتحة جداً */
+}
+
+.direct-input:focus {
+    border-color: #4318ff; /* يتغير للأزرق لما تضغطي جواه */
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(67, 24, 255, 0.05);
+}
+/* تنسيق الحاوية والجرس */
+.notification-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.notif-bell {
+    position: relative;
+    font-size: 20px;
+    color: #4318ff;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff5b5b;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* تنسيق القائمة المنسدلة */
+.notif-dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0; /* هتظهر ناحية الشمال عشان متخرجش بره الشاشة */
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    display: none; /* مخفية */
+    z-index: 100;
+}
+
+.notif-dropdown.active {
+    display: block; /* تظهر لما نضيف الكلاس ده بالـ JS */
+}
+
+.notif-title {
+    padding: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.notif-item {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.notif-item i { color: #4318ff; margin-top: 5px; }
+
+.notif-text p { margin: 0; font-size: 12px; font-weight: 600; }
+.notif-text span { font-size: 10px; color: #a3aed0; }
+
+.notif-footer {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #4318ff;
+    text-decoration: none;
+    background: #f4f7fe;
+    border-radius: 0 0 12px 12px;
+}
+.settings-header {
+    display: flex;
+    justify-content: space-between; /* يخلي العنوان يمين والجرس يسار */
+    align-items: center;
+    position: relative; /* مهم جداً لضبط مكان القائمة */
+    margin-bottom: 30px;
+}
+
+.notif-dropdown {
+    position: absolute;
+    top: 50px;
+    left: 0; /* تظهر تحت الجرس بالضبط جهة اليسار */
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    display: none; 
+    z-index: 1000; /* عشان تظهر فوق كل محتوى الصفحة */
+}

@@ -1,0 +1,132 @@
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Georgia', serif;
+}
+
+body {
+  background: #0f172a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== Container ===== */
+.container {
+  position: relative;
+  width: 420px;
+  height: 420px;
+}
+
+/* ===== Animated Circle ===== */
+.circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: rotate 14s linear infinite;
+}
+
+.circle span {
+  position: absolute;
+  width: 8px;
+  height: 22px;
+  background: #38bdf8;
+  top: 0;
+  left: 50%;
+  transform-origin: 0 210px;
+  transform: rotate(calc(30deg * var(--i)));
+  opacity: 0.3;
+}
+
+.circle span:nth-child(3n) {
+  background: #facc15;
+  opacity: 1;
+}
+
+/* ===== Animation ===== */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Auth Card ===== */
+.auth-section {
+  position: absolute;
+  inset: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 100%;
+  background: #1e293b;
+  border-radius: 22px;
+  padding: 35px 30px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  color: white;
+}
+
+.auth-card h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #facc15;
+}
+
+/* ===== Inputs ===== */
+.auth-card input,
+.auth-card select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #f8fafc;
+  font-size: 15px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-login {
+  background: #facc15;
+  color: #1e293b;
+}
+
+.btn-signup {
+  background: #38bdf8;
+  color: #1e293b;
+}
+
+/* ===== Links ===== */
+.toggle-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #38bdf8;
+  cursor: pointer;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.85em;
+  text-align: center;
+  margin-top: 10px;
+}

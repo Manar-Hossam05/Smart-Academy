@@ -1,0 +1,140 @@
+/* active-course.css */
+:root {
+    --primary-color: #4318ff;
+    --dark-blue: #1b254b;
+    --gray-text: #a3aed0;
+    --bg-gradient: linear-gradient(135deg, #f4f7fe 0%, #e6e9f0 100%);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg-gradient);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    direction: rtl;
+}
+
+.activation-wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.activation-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    position: relative;
+}
+
+.icon-header {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 25px;
+    box-shadow: 0px 10px 20px rgba(67, 24, 255, 0.2);
+}
+
+h2 {
+    color: var(--dark-blue);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+p {
+    color: var(--gray-text);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-container i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-text);
+}
+
+.input-container input {
+    width: 100%;
+    padding: 15px 45px 15px 15px;
+    border: 2px solid #e0e5f2;
+    border-radius: 15px;
+    font-family: 'Cairo';
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0px 4px 15px rgba(67, 24, 255, 0.05);
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-family: 'Cairo';
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #3311cc;
+    transform: translateY(-3px);
+    box-shadow: 0px 10px 20px rgba(67, 24, 255, 0.2);
+}
+
+.error-msg {
+    color: #ee5d50;
+    font-size: 13px;
+    margin-top: 15px;
+    height: 20px; /* لحجز مساحة ومنع القفز عند الظهور */
+}
+
+.support-info {
+    margin-top: 30px;
+    border-top: 1px solid #f4f7fe;
+    padding-top: 20px;
+    font-size: 13px;
+    color: var(--gray-text);
+}
+
+.support-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+  

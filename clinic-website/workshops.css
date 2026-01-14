@@ -1,0 +1,113 @@
+:root {
+    --primary-color: #004587;   /* الكحلي بتاعنا */
+    --secondary-color: #00BCD4; /* السماوي */
+    --bg-light: #f4f7f9;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    margin: 0;
+}
+
+.section-padding { padding: 80px 0; }
+
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.workshop-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.workshop-card {
+    background: var(--white);
+    width: 350px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 69, 135, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.workshop-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 69, 135, 0.15);
+}
+
+.icon {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.badge {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: #ff4444;
+    color: white;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Free Card Specific Styling */
+.free-card { border-bottom: 5px solid var(--secondary-color); }
+
+/* Paid Card Specific Styling */
+.paid-card { 
+    border-bottom: 5px solid #ff4444; 
+}
+
+.workshop-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.workshop-card p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.btn {
+    display: block;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-exclusive {
+    background: linear-gradient(135deg, #ff4444, #cc3333);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+.support-contact {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--primary-color);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Course | EN-AVM Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="add_course.css">
+</head>
+<body>
+
+<div class="page">
+    <div class="card">
+        <header class="page-header">
+            <h1>Add New Course</h1>
+            <p>Fill in the details below</p>
+        </header>
+
+        <form id="courseForm">
+            <div class="field">
+                <label>Course Title</label>
+                <input type="text" id="title" placeholder="e.g. Full Stack Web Development">
+            </div>
+
+            <div class="field">
+                <label>Description</label>
+                <textarea id="description" placeholder="Short course description..."></textarea>
+            </div>
+
+            <div class="grid">
+                <div class="field">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="">Select category</option>
+                        <option>Web Development</option>
+                        <option>Cyber Security</option>
+                        <option>Programming</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Course Type</label>
+                    <select id="type">
+                        <option value="Paid">Paid</option>
+                        <option value="Free">Free</option>
+                    </select>
+                </div>
+
+                <div class="field full-width">
+                    <label>Price ($)</label>
+                    <input type="number" id="price" placeholder="0.00">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="submit">Publish Course</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="add_course.js"></script>
+</body>
+</html>

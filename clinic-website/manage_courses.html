@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الكورسات | EN-AVM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="manage_courses.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <header class="main-header">
+            <div class="header-title">
+                <h1>إدارة الكورسات</h1>
+                <p>تحكم في المحتوى التعليمي المتاح على المنصة</p>
+            </div>
+            <a href="admin_dashboard.html" class="back-link">
+                العودة للرئيسية <i class="fas fa-chevron-left"></i>
+            </a>
+        </header>
+
+        <div class="courses-grid">
+            
+            <div class="course-card">
+                <div class="card-image web-grad">
+                    <i class="fas fa-code"></i>
+                    <span class="category-badge">تطوير</span>
+                </div>
+                <div class="card-body">
+                    <h3>كورس برمجة الويب</h3>
+                    <p>تعلم بناء المواقع من الصفر للاحتراف باستخدام أحدث التقنيات HTML/CSS/JS.</p>
+                    <div class="card-footer">
+                        <button class="btn btn-edit"><i class="fas fa-pen"></i> تعديل</button>
+                        <button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="card-image design-grad">
+                    <i class="fas fa-paint-brush"></i>
+                    <span class="category-badge">تصميم</span>
+                </div>
+                <div class="card-body">
+                    <h3>كورس التصميم الجرافيكي</h3>
+                    <p>إتقان أدوات Adobe والإبداع في تصميم الهويات البصرية والشعارات.</p>
+                    <div class="card-footer">
+                        <button class="btn btn-edit"><i class="fas fa-pen"></i> تعديل</button>
+                        <button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="editModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>تعديل بيانات الكورس</h2>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+        </div>
+        <form id="editForm">
+            <div class="input-group">
+                <label>اسم الكورس</label>
+                <input type="text" id="courseTitle" placeholder="أدخل اسم الكورس">
+            </div>
+            <div class="input-group">
+                <label>الوصف</label>
+                <textarea id="courseDesc" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn-save">حفظ التغييرات</button>
+        </form>
+    </div>
+</div>
+<script src="manage_courses.js"></script>
+
+</body>
+</html>

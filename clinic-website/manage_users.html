@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة العملاء | Ebtessam Nada-AVM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="manage_users.css">
+</head>
+<body>
+
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="logo-section">
+            <div class="logo-box">EN</div>
+            <h2>AVM Admin</h2>
+        </div>
+        <nav class="side-nav">
+            <a href="admin_dashboard.html"><i class="fas fa-th-large"></i> لوحة التحكم</a>
+            <a href="manage_courses.html"><i class="fas fa-book"></i> إدارة الكورسات</a>
+            <a href="manage_users.html" class="active"><i class="fas fa-users"></i> إدارة الطلاب</a>
+            <a href="#"><i class="fas fa-credit-card"></i> المعاملات المالية</a>
+            <div class="nav-divider"></div>
+            <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+    <div class="welcome-msg">
+        <h1>manage users🚀</h1>
+        <p>مرحباً بك مجدداً في نظام إدارة Ebtessam Nada-AVM</p>
+    </div>
+    <div class="admin-profile">
+        <div class="profile-info">
+            <span class="admin-name">المدير العام</span>
+            <span class="admin-status">متصل الآن</span>
+        </div>
+        <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="admin">
+    </div>
+</header>
+
+        <section class="dashboard-body">
+            <div class="stats-row">
+                <div class="stat-card blue">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-data">
+                        <h3>الطلاب</h3>
+                        <p>150</p>
+                    </div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="stat-data">
+                        <h3>الكورسات</h3>
+                        <p>12</p>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-data">
+                        <h3>مبيعات</h3>
+                        <p>45</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-section">
+                <div class="section-header">
+                    <h2>إدارة الطلاب</h2>
+                </div>
+                <div id="users-grid">
+                    </div>
+            </div>
+        </section>
+    </main>
+</div> 
+    <script src="manage_users.js"></script>
+</body>
+</html>

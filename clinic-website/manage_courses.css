@@ -1,0 +1,290 @@
+/* الإعدادات العامة */
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    background-color: #f3f4f6; /* لون خلفية رمادي فاتح جداً هادئ */
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    color: #1f2937;
+}
+
+.dashboard-container {
+    min-height: 100vh; /* تأخذ طول الشاشة بالكامل */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* توسيط عمودي */
+    align-items: center;    /* توسيط أفقي */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* الهيدر */
+.main-header {
+    width: 100%;
+    max-width: 700px; /* خليه بنفس عرض الكارتين تقريباً */
+    text-align: center;
+    margin-bottom: 50px;
+    border-right: none; 
+    border-bottom: 3px solid #4f46e5;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-title h1 {
+    font-size: 32px;
+    margin: 0;
+    color: #111827;
+}
+
+.header-title p {
+    margin: 5px 0 0;
+    color: #6b7280;
+    font-size: 15px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #4f46e5;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 18px;
+    background: #eeebff;
+    border-radius: 10px;
+}
+
+.back-link:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+/* الشبكة (Grid) */
+.courses-grid {
+    display: flex;         /* تحويلها لـ flex لتسهيل التوسيط */
+    flex-wrap: wrap;       /* عشان لو الشاشة صغرت ينزلوا تحت بعض */
+    justify-content: center; /* توسيط الكروت بالعرض */
+    gap: 30px;             /* المسافة بين البطاقتين */
+    width: 100%;
+}
+
+/* الكارد الاحترافي */
+.course-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.03);
+    border: 1px solid #e5e7eb;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+/* صور الكروت (الخلفيات) */
+.card-image {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    position: relative;
+}
+
+.web-grad { background: linear-gradient(135deg, #4f46e5, #7c3aed); }
+.design-grad { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+.category-badge {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* محتوى الكارد */
+.card-body {
+    padding: 24px;
+}
+
+.card-body h3 {
+    margin: 0 0 12px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.card-body p {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+    height: 45px;
+    margin-bottom: 25px;
+}
+
+/* الأزرار */
+.card-footer {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Cairo';
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.btn-edit {
+    flex: 4;
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.btn-edit:hover {
+    background: #e5e7eb;
+}
+
+.btn-delete {
+    flex: 1;
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.btn-delete:hover {
+    background: #fecaca;
+    transform: scale(1.05);
+}
+
+/* الحاوية الرئيسية (الخلفية المعتمة) */
+.modal {
+    display: none; /* يتم تغييره لـ flex بواسطة JavaScript */
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.7); /* لون داكن احترافي */
+    backdrop-filter: blur(10px); /* تأثير ضبابي قوي يعطي فخامة */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* جسم النافذة */
+.modal-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 500px; /* حجم مثالي ومتوازن */
+    border-radius: 28px; /* حواف دائرية ناعمة جداً */
+    padding: 35px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* العنوان */
+.modal-content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 15px;
+}
+
+/* تنسيق حقول الإدخال */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 15px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 15px;
+    color: #1e293b;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* تأثير عند التركيز على الحقل */
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: #6366f1;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+/* زر الإغلاق (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* لأن الصفحة RTL */
+    font-size: 22px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f1f5f9;
+}
+
+.close-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+/* زر حفظ التعديلات */
+.btn-save {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Cairo';
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    filter: brightness(1.1);
+}
