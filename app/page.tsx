@@ -3,6 +3,7 @@ const page = () => {
   return (
     <div>
       <HomePage />
+      smartacadmy123123
     </div>
   );
 };
