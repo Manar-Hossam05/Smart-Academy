@@ -1,7 +1,7 @@
 import React from "react";
 
-const HomePage = () => {
-  return <div className=" text-2xl text-primary">eslam shaban</div>;
+const page = () => {
+  return <div></div>;
 };
 
-export default HomePage;
+export default page;
