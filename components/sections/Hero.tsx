@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Ear, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/app/hooks/useLanguage";
-import { fadeUp } from "@/lib/animations";
+import { fadeUp } from "@/app/lib/animations";
 
 export const Hero = () => {
   const { t, isRTL } = useLanguage();
