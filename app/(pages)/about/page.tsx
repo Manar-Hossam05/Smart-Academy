@@ -1,50 +1,30 @@
 "use client";
 
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  CheckCircle2,
+  BookOpen,
+  Award,
+  Users,
+  Stethoscope,
+} from "lucide-react";
 import { useLanguage } from "@/app/hooks/useLanguage";
-import { motion, Variants } from "framer-motion";
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-40px" },
+  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
+});
 
-interface Stat {
-  value: string;
-  label: string;
-}
-interface Diploma {
-  year: string;
-  title: string;
-  source: string;
-}
+const About = () => {
+  const { t, isRTL } = useLanguage();
 
-export default function About() {
-  const { t, language } = useLanguage();
-  const isAr = language === "ar";
-
-  const arFont: React.CSSProperties = {
-    fontFamily: '"Cairo", "Tajawal", system-ui, sans-serif',
-  };
-  const baseFont = isAr ? arFont : {};
-
-  const stats: Stat[] = [
-    { value: "2019", label: t("Professor since", "أستاذة منذ") },
-    { value: "6", label: t("Book volumes", "أجزاء السلسلة") },
-    { value: t("Editor", "محررة"), label: t("& Reviewer", "ومحكِّمة") },
-    {
-      value: t("Holistic", "شمولية"),
-      label: t("Patient care", "رعاية المريض"),
-    },
-  ];
-
-  const roles: string[] = [
+  const roles = [
     t(
-      "Professor of Audio-Vestibular Medicine, Zagazig University — since 2019",
-      "أستاذة طب السمع والاتزان، جامعة الزقازيق — منذ 2019",
+      "Professor of Audio-Vestibular Medicine, Zagazig University (since 2019)",
+      "أستاذة طب السمع والاتزان، جامعة الزقازيق (منذ 2019)",
     ),
     t(
       "Coordinator, Egyptian Board of Audio-Vestibular Medicine Training Program",
@@ -52,256 +32,348 @@ export default function About() {
     ),
     t("IBCT-Certified Trainer", "مدربة معتمدة IBCT"),
     t("DHPE Fellow", "زمالة DHPE"),
-    t(
-      "Editor — Egyptian Journal of Otorhinolaryngology",
-      "محررة — المجلة المصرية لطب الأنف والأذن والحنجرة",
-    ),
-    t(
-      "Reviewer for national & international journals",
-      "محكِّمة علمية لدوريات محلية ودولية",
-    ),
   ];
 
-  const diplomas: Diploma[] = [
-    {
-      year: "2015",
-      title: t("Childhood Psychiatry", "طب نفسية الأطفال"),
-      source: "British Phoenix Academy",
-    },
-    {
-      year: "2016",
-      title: t("Therapeutic Nutrition", "التغذية العلاجية"),
-      source: "British Phoenix Academy",
-    },
+  const stats = [
+    { Icon: BookOpen, value: "6", label: t("Book Volumes", "أجزاء") },
+    { Icon: Users, value: "500+", label: t("Students", "طالب") },
+    { Icon: Award, value: "50+", label: t("Workshops", "ورشة") },
+    { Icon: Stethoscope, value: "2019", label: t("Prof. Since", "أستاذة منذ") },
   ];
 
   return (
-    <div
-      dir={isAr ? "rtl" : "ltr"}
-      className="min-h-screen flex flex-col bg-[#f8f9fc] dark:bg-[#06101f]"
-      style={baseFont}
-    >
-      <main className="flex-1 w-full max-w-3xl mx-auto px-8 py-28 space-y-24">
-        {/* ══ INTRO ══════════════════════════════════════════════ */}
-        <section className="space-y-6">
-          {/* label — يبدأ من بداية السطر دايمًا (start = يمين عربي / يسار إنجليزي) */}
-          <motion.span
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="block text-xs font-bold tracking-[0.2em] uppercase text-[#00b4d8] text-start"
-          >
-            Smart Academy
-          </motion.span>
-
-          <motion.h1
-            custom={1}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="text-5xl md:text-6xl font-bold text-[#0a2540] dark:text-white text-start"
-            style={{
-              fontFamily: isAr
-                ? '"Cairo","Tajawal",system-ui,sans-serif'
-                : '"Playfair Display",Georgia,serif',
-              lineHeight: isAr ? 1.6 : 1.15,
-            }}
-          >
-            {t("About", "عن")}{" "}
-            <span className="text-[#00b4d8]">
-              {t("Prof. Dr. Ebtessam Nada", "أ.د. ابتسام ندى")}
-            </span>
-          </motion.h1>
-
-          <motion.p
-            custom={2}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="text-[#64748b] dark:text-[#94a3b8] text-xl text-start"
-            style={{ ...baseFont, lineHeight: isAr ? 2.1 : 1.75 }}
-          >
-            {t(
-              "Professor of Audio-Vestibular Medicine at Zagazig University, Egypt. Founder of Audiology Step by Step — a leading educational platform supporting clinicians and trainees across the region.",
-              'أستاذة طب السمع والاتزان بجامعة الزقازيق، مصر. مؤسِّسة منصة "Audiology Step by Step" التعليمية الرائدة لدعم الأطباء والمتدربين في المنطقة.',
-            )}
-          </motion.p>
-        </section>
-
-        {/* ══ STATS ══════════════════════════════════════════════ */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden
-                     border border-[#e2e8f0] dark:border-white/10"
+    <div className="min-h-screen flex flex-col bg-white">
+      <main className="flex-1">
+        {/* ── Hero strip ── */}
+        <section
+          dir={isRTL ? "rtl" : "ltr"}
+          className="bg-primary relative overflow-hidden"
         >
-          {stats.map((s, i) => (
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_50%,rgba(0,180,216,0.1),transparent)]" />
+          <div className="max-w-4xl mx-auto px-6 sm:px-10 py-20 relative z-10">
             <motion.div
-              key={i}
-              custom={i}
-              variants={fadeUp}
-              className="bg-white dark:bg-[#0d1f35] py-8 px-4
-                         flex flex-col items-center gap-2 text-center
-                         border-e border-b md:border-b-0
-                         border-[#e2e8f0] dark:border-white/10
-                         last:border-e-0"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="text-2xl font-bold text-[#0a2540] dark:text-white">
-                {s.value}
-              </span>
-              <span
-                className="text-sm text-[#94a3b8] leading-snug"
-                style={baseFont}
+              {/* breadcrumb */}
+              <div
+                className={`flex items-center gap-2 text-white/30 text-[12px] mb-8 ${isRTL ? "flex-row-reverse justify-end" : ""}`}
               >
-                {s.label}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <hr className="border-[#e2e8f0] dark:border-white/10" />
-
-        {/* ══ ROLES ══════════════════════════════════════════════ */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          <motion.span
-            custom={0}
-            variants={fadeUp}
-            className="block text-xs font-bold tracking-[0.2em] uppercase text-[#00b4d8] text-start"
-          >
-            {t("Positions & Roles", "المناصب والأدوار")}
-          </motion.span>
-
-          <ul className="space-y-5">
-            {roles.map((role, i) => (
-              <motion.li
-                key={i}
-                custom={i}
-                variants={fadeUp}
-                className="flex items-start gap-4"
-              >
-                {/* النقطة بتكون أول حاجة — وبسبب dir="rtl" هتظهر على اليمين تلقائيًا */}
-                <span className="mt-[11px] w-1.5 h-1.5 rounded-full bg-[#00b4d8] flex-shrink-0" />
-                <span
-                  className="text-[#334155] dark:text-white/80 text-lg text-start"
-                  style={{ ...baseFont, lineHeight: isAr ? 2 : 1.75 }}
+                <Link
+                  href="/"
+                  className="hover:text-secondary transition-colors"
                 >
-                  {role}
+                  {t("Home", "الرئيسية")}
+                </Link>
+                <span>/</span>
+                <span className="text-white/55">
+                  {t("About", "عن الأكاديمية")}
                 </span>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
+              </div>
 
-        <hr className="border-[#e2e8f0] dark:border-white/10" />
-
-        {/* ══ PUBLICATIONS ═══════════════════════════════════════ */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          <motion.span
-            custom={0}
-            variants={fadeUp}
-            className="block text-xs font-bold tracking-[0.2em] uppercase text-[#00b4d8] text-start"
-          >
-            {t("Publications", "الإصدارات")}
-          </motion.span>
-
-          <motion.div
-            custom={1}
-            variants={fadeUp}
-            className="flex items-center gap-8
-                       bg-white dark:bg-[#0d1f35]
-                       border border-[#e2e8f0] dark:border-white/10
-                       rounded-2xl px-8 py-7"
-          >
-            {/* الرقم 6 على الجانب الخارجي دائمًا */}
-            <span
-              className="text-[72px] font-black leading-none select-none
-                             text-[#e2e8f0] dark:text-white/10 tabular-nums flex-shrink-0"
-            >
-              6
-            </span>
-            <div className="space-y-2 text-start">
-              <p className="font-bold text-[#0a2540] dark:text-white text-xl">
-                Audiology Step by Step
+              <p className="text-secondary/70 text-[11px] font-bold tracking-[0.25em] uppercase mb-4">
+                EN-AVM Academy
               </p>
-              <p
-                className="text-[#64748b] dark:text-[#94a3b8] text-base"
-                style={{ ...baseFont, lineHeight: isAr ? 2 : 1.75 }}
-              >
+              <h1 className="font-serif text-white text-[clamp(36px,6vw,72px)] font-bold leading-[1.0] tracking-tight mb-6">
+                {t("About the", "عن")}
+                <br />
+                <span
+                  style={{
+                    WebkitTextStroke: "1.5px rgba(0,180,216,0.6)",
+                    color: "transparent",
+                  }}
+                >
+                  {t("Academy", "الأكاديمية")}
+                </span>
+              </h1>
+              <p className="text-white/45 text-[15px] leading-relaxed max-w-xl">
                 {t(
-                  "Six volumes covering clinical audiology, vestibular assessment, hearing aids, cochlear implants, and more.",
-                  "ستة أجزاء تغطي السمعيات الإكلينيكية، تقييم الاتزان، السماعات الطبية، زراعة القوقعة وغيرها.",
+                  "A trusted learning space for Audio-Vestibular Medicine, led by Prof. Dr. Ebtessam Nada.",
+                  "منصة تعليمية موثوقة في طب السمع والاتزان، بقيادة أ.د. ابتسام ندى.",
                 )}
               </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ── Stats bar ── */}
+        <section
+          dir={isRTL ? "rtl" : "ltr"}
+          className="bg-[#f8f9fc] border-b border-slate-100"
+        >
+          <div className="max-w-4xl mx-auto px-6 sm:px-10 py-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {stats.map((s, i) => (
+                <motion.div
+                  key={i}
+                  {...fadeUp(i * 0.07)}
+                  className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
+                >
+                  <div className="w-9 h-9 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                    <s.Icon className="w-4 h-4 text-secondary" />
+                  </div>
+                  <div>
+                    <div className="font-serif text-primary font-bold text-[20px] leading-none">
+                      {s.value}
+                    </div>
+                    <div className="text-slate-400 text-[11px] mt-0.5">
+                      {s.label}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Main content ── */}
+        <div
+          dir={isRTL ? "rtl" : "ltr"}
+          className="max-w-4xl mx-auto px-6 sm:px-10 py-16 space-y-16"
+        >
+          {/* About Prof */}
+          <motion.div
+            {...fadeUp()}
+            className="grid sm:grid-cols-[auto_1fr] gap-8 items-start"
+          >
+            {/* accent bar */}
+            <div className="hidden sm:block w-1 self-stretch rounded-full bg-gradient-to-b from-secondary to-secondary/10 flex-shrink-0" />
+            <div>
+              <h2 className="font-serif text-primary text-[22px] font-bold mb-5">
+                {t("About Prof. Dr. Ebtessam Nada", "عن أ.د. ابتسام ندى")}
+              </h2>
+              <div className="space-y-4 text-slate-500 text-[15px] leading-[1.9]">
+                <p>
+                  {t(
+                    "Prof. Dr. Ebtessam Nada is a Professor of Audio-Vestibular Medicine at the Otolaryngology Department, Zagazig University, Egypt. With extensive clinical and academic experience, she is dedicated to improving the standards of audiology and vestibular practice across the region through education, research, and structured professional training.",
+                    "أ.د. ابتسام ندى أستاذة طب السمع والاتزان بقسم الأنف والأذن والحنجرة، جامعة الزقازيق – مصر. بخبرة إكلينيكية وأكاديمية واسعة، تكرّس جهودها لرفع معايير ممارسة السمعيات والاتزان في المنطقة عبر التعليم والبحث والتدريب المهني المنهجي.",
+                  )}
+                </p>
+                <p>
+                  {t(
+                    "She is the founder and director of Audiology Step by Step, one of the leading educational platforms in the field, offering comprehensive lectures, case-based teaching, written materials, and continuously updated literature to support clinicians and trainees. Her commitment to mentorship has helped guide many young physicians and audiologists toward professional excellence in diagnostics and rehabilitation.",
+                    "وهي المؤسسة والمديرة لمنصة Audiology Step by Step، إحدى أبرز المنصات التعليمية في المجال، والتي تقدم محاضرات شاملة وتعليمًا قائمًا على الحالات ومواد مكتوبة ومراجع محدثة باستمرار لدعم الأطباء والمتدربين.",
+                  )}
+                </p>
+              </div>
             </div>
           </motion.div>
-        </motion.div>
 
-        <hr className="border-[#e2e8f0] dark:border-white/10" />
+          {/* Divider */}
+          <div className="h-px bg-slate-100" />
 
-        {/* ══ BEYOND AUDIOLOGY ═══════════════════════════════════ */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          <motion.span
-            custom={0}
-            variants={fadeUp}
-            className="block text-xs font-bold tracking-[0.2em] uppercase text-[#00b4d8] text-start"
+          {/* Professional Roles */}
+          <motion.div
+            {...fadeUp()}
+            className="grid sm:grid-cols-[auto_1fr] gap-8 items-start"
           >
-            {t("Beyond Audiology", "ما وراء السمعيات")}
-          </motion.span>
+            <div className="hidden sm:block w-1 self-stretch rounded-full bg-gradient-to-b from-secondary to-secondary/10 flex-shrink-0" />
+            <div>
+              <h2 className="font-serif text-primary text-[22px] font-bold mb-6">
+                {t(
+                  "Professional Positions & Roles",
+                  "المناصب والأدوار المهنية",
+                )}
+              </h2>
+              <div className="space-y-3">
+                {roles.map((role, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: isRTL ? 12 : -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: i * 0.07 }}
+                    className={`flex items-start gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0 mt-[3px]" />
+                    <span className="text-slate-600 text-[15px] leading-relaxed">
+                      {role}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
 
-          <motion.p
-            custom={1}
-            variants={fadeUp}
-            className="text-[#64748b] dark:text-[#94a3b8] text-lg text-start"
-            style={{ ...baseFont, lineHeight: isAr ? 2 : 1.75 }}
+          {/* Divider */}
+          <div className="h-px bg-slate-100" />
+
+          {/* Publications */}
+          <motion.div
+            {...fadeUp()}
+            className="grid sm:grid-cols-[auto_1fr] gap-8 items-start"
           >
-            {t(
-              "Believing in a holistic view of patient health — the interplay between neurological, psychological, nutritional, and sensory systems.",
-              "تتبنى رؤية شمولية لصحة المريض تُراعي تداخل العوامل العصبية والنفسية والتغذوية والحسية.",
-            )}
-          </motion.p>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {diplomas.map((d, i) => (
-              <motion.div
-                key={i}
-                custom={i + 2}
-                variants={fadeUp}
-                className="bg-white dark:bg-[#0d1f35]
-                           border border-[#e2e8f0] dark:border-white/10
-                           rounded-2xl px-7 py-6 space-y-2 text-start"
-              >
-                <span className="block text-[#00b4d8] font-bold text-base tabular-nums">
-                  {d.year}
-                </span>
-                <p
-                  className="text-[#0a2540] dark:text-white font-semibold text-lg"
-                  style={baseFont}
-                >
-                  {d.title}
+            <div className="hidden sm:block w-1 self-stretch rounded-full bg-gradient-to-b from-secondary to-secondary/10 flex-shrink-0" />
+            <div>
+              <h2 className="font-serif text-primary text-[22px] font-bold mb-5">
+                {t(
+                  "Publications & Academic Work",
+                  "الإصدارات والعمل الأكاديمي",
+                )}
+              </h2>
+              <div className="space-y-4 text-slate-500 text-[15px] leading-[1.9] mb-7">
+                <p>
+                  {t(
+                    'Prof. Nada is the author of the educational book series "Audiology Step by Step", now consisting of six volumes covering clinical audiology, vestibular assessment, hearing aids, cochlear implants, and more.',
+                    'أ.د. ابتسام هي مؤلفة سلسلة الكتب التعليمية "Audiology Step by Step" والتي أصبحت الآن 6 أجزاء تغطي السمعيات الإكلينيكية وتقييم الاتزان والسماعات الطبية وزراعة القوقعة وغيرها.',
+                  )}
                 </p>
-                <p className="text-[#94a3b8] text-sm">{d.source}</p>
-              </motion.div>
-            ))}
+                <p>
+                  {t(
+                    "She serves as an Editor for the Egyptian Journal of Otorhinolaryngology, and contributes as a reviewer for several national and international journals, with numerous scientific publications to her credit.",
+                    "وتعمل كمحررة بالمجلة المصرية لطب الأنف والأذن والحنجرة، وتشارك كمحكِّمة علمية لعدد من الدوريات المحلية والدولية، مع عدد كبير من المنشورات العلمية.",
+                  )}
+                </p>
+              </div>
+
+              {/* volume chips */}
+              <div className="flex flex-wrap gap-2">
+                {[
+                  {
+                    n: 1,
+                    color: "#00b4d8",
+                    title: t("Basic Audiology", "السمعيات الأساسية"),
+                  },
+                  {
+                    n: 2,
+                    color: "#0096c7",
+                    title: t("Advanced Diagnostics", "التشخيص المتقدم"),
+                  },
+                  {
+                    n: 3,
+                    color: "#0077b6",
+                    title: t("Vestibular System", "الجهاز الدهليزي"),
+                  },
+                  {
+                    n: 4,
+                    color: "#48cae4",
+                    title: t("Hearing Aids", "السماعات الطبية"),
+                  },
+                  {
+                    n: 5,
+                    color: "#0d3868",
+                    title: t("Cochlear Implants", "زراعة القوقعة"),
+                  },
+                  {
+                    n: 6,
+                    color: "#e9c46a",
+                    title: t("Board Preparation", "التحضير للبورد"),
+                  },
+                ].map((v) => (
+                  <div
+                    key={v.n}
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[13px] font-medium`}
+                    style={{
+                      backgroundColor: `${v.color}12`,
+                      borderColor: `${v.color}30`,
+                      color: v.color === "#e9c46a" ? "#b5882a" : v.color,
+                    }}
+                  >
+                    <span className="font-serif font-bold text-[11px]">
+                      Vol.{v.n}
+                    </span>
+                    <span className="text-slate-500 font-normal">
+                      {v.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Divider */}
+          <div className="h-px bg-slate-100" />
+
+          {/* Beyond Audiology */}
+          <motion.div
+            {...fadeUp()}
+            className="grid sm:grid-cols-[auto_1fr] gap-8 items-start"
+          >
+            <div className="hidden sm:block w-1 self-stretch rounded-full bg-gradient-to-b from-secondary to-secondary/10 flex-shrink-0" />
+            <div>
+              <h2 className="font-serif text-primary text-[22px] font-bold mb-5">
+                {t("Beyond Audiology", "ما وراء السمعيات")}
+              </h2>
+              <p className="text-slate-500 text-[15px] leading-[1.9]">
+                {t(
+                  "Holding diplomas in Childhood Psychiatry (2015) and Therapeutic Nutrition (2016) from the British Phoenix Academy, she believes in a holistic view of patient health — recognizing the interplay between neurological, psychological, nutritional, and sensory systems.",
+                  "بحصولها على دبلومات في طب نفسية الأطفال (2015) والتغذية العلاجية (2016) من الأكاديمية البريطانية فينيكس، تتبنى رؤية شمولية لصحة المريض تُراعي تداخل العوامل العصبية والنفسية والتغذوية والحسية.",
+                )}
+              </p>
+
+              {/* diploma chips */}
+              <div
+                className={`flex flex-wrap gap-2 mt-5 ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                {[
+                  {
+                    label: t("Childhood Psychiatry", "طب نفسية الأطفال"),
+                    year: "2015",
+                  },
+                  {
+                    label: t("Therapeutic Nutrition", "التغذية العلاجية"),
+                    year: "2016",
+                  },
+                ].map((d, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-[13px]"
+                  >
+                    <span className="text-secondary font-bold font-serif">
+                      {d.year}
+                    </span>
+                    <span className="text-slate-500">{d.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── CTA ── */}
+        <section
+          dir={isRTL ? "rtl" : "ltr"}
+          className="bg-[#f8f9fc] border-t border-slate-100"
+        >
+          <div className="max-w-4xl mx-auto px-6 sm:px-10 py-14">
+            <motion.div
+              {...fadeUp()}
+              className={`flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 ${isRTL ? "sm:flex-row-reverse" : ""}`}
+            >
+              <div>
+                <h3 className="font-serif text-primary text-[20px] font-bold mb-1">
+                  {t("Ready to start learning?", "مستعد للبدء؟")}
+                </h3>
+                <p className="text-slate-400 text-[14px]">
+                  {t(
+                    "Browse our courses and book series.",
+                    "تصفح الدورات والكتب.",
+                  )}
+                </p>
+              </div>
+              <div
+                className={`flex gap-3 flex-shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                <Link
+                  href="/courses"
+                  className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-2xl text-[14px] shadow-lg shadow-secondary/20 hover:-translate-y-0.5 transition-all"
+                >
+                  {t("Browse Courses", "تصفح الدورات")}
+                </Link>
+                <Link
+                  href="#book"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 font-medium px-5 py-3 rounded-2xl text-[14px] transition-all"
+                >
+                  {t("Book Series", "سلسلة الكتب")}
+                </Link>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </section>
       </main>
     </div>
   );
-}
+};
+
+export default About;
