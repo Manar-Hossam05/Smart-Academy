@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { BookOpen, Microscope, Users, Award, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/app/hooks/useLanguage";
-import { fadeUpView } from "@/app/lib/animations";
+import { fadeUpView } from "@/lib/animations";
 
 export const WhyChooseUs = () => {
   const { t, isRTL } = useLanguage();

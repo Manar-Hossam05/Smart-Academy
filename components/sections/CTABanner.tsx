@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/app/hooks/useLanguage";
-import { fadeUpView } from "@/app/lib/animations";
+import { fadeUpView } from "@/lib/animations";
 
 export const CTABanner = () => {
   const { t, isRTL } = useLanguage();

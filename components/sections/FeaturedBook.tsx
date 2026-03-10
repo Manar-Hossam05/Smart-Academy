@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/app/hooks/useLanguage";
-import { fadeUpView } from "@/app/lib/animations";
+import { fadeUpView } from "@/lib/animations";
 
 interface Volume {
   n: number;

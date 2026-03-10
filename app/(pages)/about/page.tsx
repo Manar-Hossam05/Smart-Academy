@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -184,7 +183,7 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: i * 0.07 }}
-                    className={`flex items-start gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
+                    className={`flex items-start gap-3 ${isRTL ? "" : ""}`}
                   >
                     <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0 mt-[3px]" />
                     <span className="text-slate-600 text-[15px] leading-relaxed">

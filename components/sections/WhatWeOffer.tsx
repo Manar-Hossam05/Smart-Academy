@@ -11,7 +11,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { useLanguage } from "@/app/hooks/useLanguage";
-import { fadeUpView } from "@/app/lib/animations";
+import { fadeUpView } from "@/lib/animations";
 
 export const WhatWeOffer = () => {
   const { t, isRTL } = useLanguage();

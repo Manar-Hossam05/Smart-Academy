@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useState, type ReactNode } from "react";
-import type { Lang } from "../lib/i18n";
+import type { Lang } from "../../lib/i18n";
 
 export interface LanguageContextValue {
   lang: Lang;
