@@ -12,8 +12,8 @@ export const Header = () => {
 
   const links = [
     { label: t("Home", "الرئيسية"), href: "/", emoji: "🏠" },
-    { label: t("About", "عن الأكاديمية"), href: "#why", emoji: "👩‍⚕️" },
-    { label: t("Courses", "الدورات"), href: "#offer", emoji: "🎓" },
+    { label: t("About", "عن الأكاديمية"), href: "/about", emoji: "👩‍⚕️" },
+    { label: t("Courses", "الدورات"), href: "/courses", emoji: "🎓" },
     { label: t("Book Series", "سلسلة الكتب"), href: "#book", emoji: "📚" },
   ];
 
@@ -54,7 +54,7 @@ export const Header = () => {
               {lang === "en" ? "ع" : "EN"}
             </button>
             <Link
-              href="/login"
+              href="/auth/login"
               className="hidden sm:flex bg-secondary hover:bg-secondary/90 text-white text-[13.5px] font-semibold px-4 py-2 rounded-xl shadow-lg shadow-secondary/20 hover:-translate-y-0.5 transition-all"
             >
               {t("Login", "دخول")}

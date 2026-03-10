@@ -120,16 +120,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.CourseScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  description: 'description',
-  language: 'language',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  published: 'published'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -169,6 +159,42 @@ exports.Prisma.EmailVerifyTokenScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.CourseScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  language: 'language',
+  published: 'published',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EnrollmentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  courseId: 'courseId',
+  status: 'status',
+  progress: 'progress',
+  enrolledAt: 'enrolledAt',
+  completedAt: 'completedAt'
+};
+
+exports.Prisma.BalanceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  amount: 'amount',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TransactionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  amount: 'amount',
+  description: 'description',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -188,12 +214,26 @@ exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN'
 };
 
+exports.EnrollmentStatus = exports.$Enums.EnrollmentStatus = {
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.TransactionType = exports.$Enums.TransactionType = {
+  CREDIT: 'CREDIT',
+  DEBIT: 'DEBIT'
+};
+
 exports.Prisma.ModelName = {
-  Course: 'Course',
   User: 'User',
   Session: 'Session',
   PasswordResetToken: 'PasswordResetToken',
-  EmailVerifyToken: 'EmailVerifyToken'
+  EmailVerifyToken: 'EmailVerifyToken',
+  Course: 'Course',
+  Enrollment: 'Enrollment',
+  Balance: 'Balance',
+  Transaction: 'Transaction'
 };
 
 /**

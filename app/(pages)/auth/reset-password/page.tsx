@@ -5,15 +5,22 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { Field, SubmitButton, Alert } from "@/components/auth/FormFields";
+import { useLanguage } from "@/app/hooks/useLanguage";
 
 export default function ResetPasswordPage() {
+  const { t } = useLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
 
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(
-    !token ? "الرابط غير صالح — اطلب رابطاً جديداً" : null,
+    !token
+      ? t(
+          "Invalid link — request a new one",
+          "الرابط غير صالح — اطلب رابطاً جديداً",
+        )
+      : null,
   );
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -24,11 +31,16 @@ export default function ResetPasswordPage() {
     const confirm = fd.get("confirm_password") as string;
 
     if (password !== confirm) {
-      setError("كلمتا المرور غير متطابقتين");
+      setError(t("Passwords do not match", "كلمتا المرور غير متطابقتين"));
       return;
     }
     if (password.length < 8) {
-      setError("كلمة المرور يجب أن تكون ٨ أحرف على الأقل");
+      setError(
+        t(
+          "Password must be at least 8 characters",
+          "كلمة المرور يجب أن تكون ٨ أحرف على الأقل",
+        ),
+      );
       return;
     }
 
@@ -50,45 +62,53 @@ export default function ResetPasswordPage() {
 
   return (
     <AuthCard
-      title="تعيين كلمة مرور جديدة"
-      subtitle="أدخل كلمة مرور قوية لحسابك"
+      titleEn="Set a new password"
+      titleAr="تعيين كلمة مرور جديدة"
+      subtitleEn="Choose a strong password for your account"
+      subtitleAr="أدخل كلمة مرور قوية لحسابك"
       footer={
         <Link
           href="/auth/forgot-password"
           className="text-[#00b4d8] font-medium hover:underline"
         >
-          طلب رابط جديد
+          {t("Request a new link", "طلب رابط جديد")}
         </Link>
       }
     >
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4" dir="rtl">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {error && <Alert type="error" message={error} />}
 
         <Field
-          label="كلمة المرور الجديدة"
+          label={t("New Password", "كلمة المرور الجديدة")}
           name="password"
           type="password"
-          placeholder="٨ أحرف على الأقل"
+          placeholder={t("At least 8 characters", "٨ أحرف على الأقل")}
           required
           autoComplete="new-password"
         />
         <Field
-          label="تأكيد كلمة المرور"
+          label={t("Confirm Password", "تأكيد كلمة المرور")}
           name="confirm_password"
           type="password"
-          placeholder="أعد إدخال كلمة المرور"
+          placeholder={t("Re-enter your password", "أعد إدخال كلمة المرور")}
           required
           autoComplete="new-password"
         />
 
-        <ul className="text-slate-400 text-[12px] space-y-0.5 -mt-1 list-none pe-1">
-          <li>• ٨ أحرف على الأقل</li>
-          <li>• يُنصح باستخدام أحرف كبيرة وأرقام ورموز</li>
+        <ul className="text-slate-400 text-[12px] space-y-0.5 -mt-1 list-none">
+          <li>• {t("At least 8 characters", "٨ أحرف على الأقل")}</li>
+          <li>
+            •{" "}
+            {t(
+              "Mix uppercase, numbers & symbols",
+              "يُنصح باستخدام أحرف كبيرة وأرقام ورموز",
+            )}
+          </li>
         </ul>
 
         <SubmitButton
-          label="تعيين كلمة المرور"
-          pendingLabel="جاري الحفظ..."
+          label={t("Set Password", "تعيين كلمة المرور")}
+          pendingLabel={t("Saving...", "جاري الحفظ...")}
           pending={pending}
         />
       </form>

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Eye, EyeOff, AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
 
-// ── Field ──────────────────────────────────────────────────────────────────
 interface FieldProps {
   label: string;
   name: string;
@@ -59,7 +58,6 @@ export function Field({
   );
 }
 
-// ── SubmitButton ───────────────────────────────────────────────────────────
 export function SubmitButton({
   label,
   pendingLabel,
@@ -87,7 +85,6 @@ export function SubmitButton({
   );
 }
 
-// ── Alert ──────────────────────────────────────────────────────────────────
 export function Alert({
   type,
   message,

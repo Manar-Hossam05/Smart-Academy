@@ -5,8 +5,10 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { Field, SubmitButton, Alert } from "@/components/auth/FormFields";
+import { useLanguage } from "@/app/hooks/useLanguage";
 
 export default function LoginPage() {
+  const { t, isRTL } = useLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
   const verified = searchParams.get("verified");
@@ -38,31 +40,36 @@ export default function LoginPage() {
 
   return (
     <AuthCard
-      title="أهلاً بعودتك"
-      subtitle="سجّل دخولك للمتابعة"
+      titleEn="Welcome back"
+      titleAr="أهلاً بعودتك"
+      subtitleEn="Sign in to continue"
+      subtitleAr="سجّل دخولك للمتابعة"
       footer={
-        <span>
-          ليس لديك حساب؟{" "}
+        <span dir={isRTL ? "rtl" : "ltr"}>
+          {t("Don't have an account?", "ليس لديك حساب؟")}{" "}
           <Link
             href="/auth/register"
             className="text-[#00b4d8] font-medium hover:underline"
           >
-            إنشاء حساب جديد
+            {t("Create one", "إنشاء حساب جديد")}
           </Link>
         </span>
       }
     >
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4" dir="rtl">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {verified && (
           <Alert
             type="success"
-            message="تم تفعيل حسابك بنجاح! سجّل دخولك الآن"
+            message={t(
+              "Account activated! Sign in now.",
+              "تم تفعيل حسابك بنجاح! سجّل دخولك الآن",
+            )}
           />
         )}
         {error && <Alert type="error" message={error} />}
 
         <Field
-          label="البريد الإلكتروني"
+          label={t("Email", "البريد الإلكتروني")}
           name="email"
           type="email"
           placeholder="example@email.com"
@@ -70,20 +77,20 @@ export default function LoginPage() {
           autoComplete="email"
         />
 
-        {/* password + forgot link */}
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
             <label
               htmlFor="password"
               className="text-slate-700 text-[13px] font-medium"
             >
-              كلمة المرور <span className="text-[#00b4d8]">*</span>
+              {t("Password", "كلمة المرور")}{" "}
+              <span className="text-[#00b4d8]">*</span>
             </label>
             <Link
               href="/auth/forgot-password"
               className="text-[#00b4d8] text-[12px] font-medium hover:underline"
             >
-              نسيت كلمة المرور؟
+              {t("Forgot password?", "نسيت كلمة المرور؟")}
             </Link>
           </div>
           <input
@@ -98,8 +105,8 @@ export default function LoginPage() {
         </div>
 
         <SubmitButton
-          label="تسجيل الدخول"
-          pendingLabel="جاري الدخول..."
+          label={t("Sign In", "تسجيل الدخول")}
+          pendingLabel={t("Signing in...", "جاري الدخول...")}
           pending={pending}
         />
       </form>
