@@ -16,6 +16,7 @@ import {
   TrendingUp,
   Award,
   Loader2,
+  Plus,
 } from "lucide-react";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -57,7 +58,6 @@ interface ProfileData {
   transactions: Transaction[];
 }
 
-// ─── Tab type ──────────────────────────────────────────────────────────────────
 type Tab = "overview" | "courses" | "balance" | "settings";
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -68,6 +68,7 @@ export function ProfileClient() {
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<Tab>("overview");
+  const [showRecharge, setShowRecharge] = useState(false);
 
   useEffect(() => {
     fetch("/api/profile")
@@ -134,15 +135,28 @@ export function ProfileClient() {
 
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen bg-[#f4f6f9]">
+      {/* ── Recharge Modal ── */}
+      {showRecharge && (
+        <RechargeModal
+          userId={profile.id}
+          isRTL={isRTL}
+          t={t}
+          onClose={() => setShowRecharge(false)}
+        />
+      )}
+
       {/* ── Header ── */}
       <div className="bg-[#0a2540] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_50%,rgba(0,180,216,0.1),transparent)]" />
         <div className="max-w-5xl mx-auto px-6 py-8 relative z-10">
-          <div className="flex items-center justify-between mb-8">
+          {/* top bar */}
+          <div
+            className={`flex items-center justify-between mb-8 ${isRTL ? "flex-row-reverse" : ""}`}
+          >
             <span className="text-white/40 text-[13px]">Smart Academy</span>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 text-white/50 hover:text-white text-[13px] transition-colors"
+              className={`flex items-center gap-2 text-white/50 hover:text-white text-[13px] transition-colors ${isRTL ? "flex-row-reverse" : ""}`}
             >
               <LogOut className="w-4 h-4" />
               {t("Logout", "تسجيل الخروج")}
@@ -158,13 +172,15 @@ export function ProfileClient() {
                 {profile.fullName.charAt(0).toUpperCase()}
               </span>
             </div>
-            <div>
+            <div className={isRTL ? "text-right" : ""}>
               <h1 className="text-white text-[20px] font-bold">
                 {profile.fullName}
               </h1>
               <p className="text-white/40 text-[13px]">{profile.email}</p>
               {!profile.emailVerified && (
-                <span className="inline-flex items-center gap-1 text-amber-400 text-[11px] mt-1">
+                <span
+                  className={`inline-flex items-center gap-1 text-amber-400 text-[11px] mt-1 ${isRTL ? "flex-row-reverse" : ""}`}
+                >
                   <AlertCircle className="w-3 h-3" />
                   {t("Email not verified", "البريد غير مفعّل")}
                 </span>
@@ -178,7 +194,7 @@ export function ProfileClient() {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all ${isRTL ? "flex-row-reverse" : ""} ${
                   activeTab === tab.key
                     ? "bg-white/10 text-white"
                     : "text-white/40 hover:text-white/70"
@@ -256,6 +272,25 @@ export function ProfileClient() {
               <h2 className="text-[#0a2540] font-bold text-[16px] mb-5">
                 {t("Personal Information", "البيانات الشخصية")}
               </h2>
+
+              {/* account ID */}
+              <div
+                className={`flex items-center gap-2 mb-5 p-3 bg-[#f4f6f9] rounded-xl ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                <span className="text-slate-400 text-[12px]">
+                  {t("Account ID:", "رقم الحساب:")}
+                </span>
+                <span className="font-mono font-bold text-[#00b4d8] text-[13px] select-all">
+                  {profile.id.slice(0, 8).toUpperCase()}
+                </span>
+                <span className="text-slate-400 text-[11px]">
+                  {t(
+                    "(use when contacting support)",
+                    "(استخدمه عند التواصل مع الدعم)",
+                  )}
+                </span>
+              </div>
+
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   {
@@ -356,13 +391,36 @@ export function ProfileClient() {
             <div className="bg-[#0a2540] rounded-3xl p-7 relative overflow-hidden">
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#00b4d8]/[0.1] rounded-full blur-3xl" />
               <div className="relative z-10">
+                {/* account ID */}
+                <div
+                  className={`flex items-center gap-2 mb-4 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}
+                >
+                  <span className="text-white/30 text-[11px] uppercase tracking-wider">
+                    {t("Account ID", "رقم الحساب")}
+                  </span>
+                  <span className="font-mono text-white/70 text-[13px] bg-white/5 px-3 py-1 rounded-lg select-all border border-white/10">
+                    {profile.id.slice(0, 8).toUpperCase()}
+                  </span>
+                  <span className="text-white/20 text-[11px]">
+                    {t("(share with support)", "(شاركه مع الدعم)")}
+                  </span>
+                </div>
+
                 <div className="text-white/40 text-[13px] mb-2">
                   {t("Available Balance", "الرصيد المتاح")}
                 </div>
                 <div className="font-serif text-[#00b4d8] font-bold text-[42px] leading-none mb-1">
                   {balance.toFixed(2)}
                 </div>
-                <div className="text-white/30 text-[13px]">EGP</div>
+                <div className="text-white/30 text-[13px] mb-6">EGP</div>
+
+                <button
+                  onClick={() => setShowRecharge(true)}
+                  className={`inline-flex items-center gap-2 bg-[#00b4d8] hover:bg-[#00b4d8]/90 text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] shadow-lg shadow-[#00b4d8]/20 transition-all hover:-translate-y-0.5 ${isRTL ? "flex-row-reverse" : ""}`}
+                >
+                  <Plus className="w-4 h-4" />
+                  {t("Recharge Balance", "شحن الرصيد")}
+                </button>
               </div>
             </div>
 
@@ -488,8 +546,9 @@ function CourseCard({
               {enrollment.course.description}
             </p>
           )}
-          {/* progress bar */}
-          <div className="flex items-center gap-3">
+          <div
+            className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
+          >
             <div className="flex-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
               <div
                 className="h-full bg-[#00b4d8] rounded-full transition-all"
@@ -586,7 +645,9 @@ function SettingsTab({
         text: t("Saved successfully", "تم الحفظ بنجاح"),
       });
       onUpdated(data.data);
-    } else setMsg({ type: "error", text: data.error });
+    } else {
+      setMsg({ type: "error", text: data.error });
+    }
   }
 
   async function changePassword(e: React.FormEvent) {
@@ -615,7 +676,9 @@ function SettingsTab({
       setCurrPass("");
       setNewPass("");
       setConfPass("");
-    } else setPwMsg({ type: "error", text: data.error });
+    } else {
+      setPwMsg({ type: "error", text: data.error });
+    }
   }
 
   const inputCls =
@@ -667,7 +730,7 @@ function SettingsTab({
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all"
+            className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "flex-row-reverse" : ""}`}
           >
             {saving ? (
               <>
@@ -699,23 +762,25 @@ function SettingsTab({
               {pwMsg.text}
             </div>
           )}
-          {[
-            {
-              label: t("Current Password", "كلمة المرور الحالية"),
-              val: currPass,
-              set: setCurrPass,
-            },
-            {
-              label: t("New Password", "كلمة المرور الجديدة"),
-              val: newPass,
-              set: setNewPass,
-            },
-            {
-              label: t("Confirm New Password", "تأكيد كلمة المرور الجديدة"),
-              val: confPass,
-              set: setConfPass,
-            },
-          ].map((f, i) => (
+          {(
+            [
+              {
+                label: t("Current Password", "كلمة المرور الحالية"),
+                val: currPass,
+                set: setCurrPass,
+              },
+              {
+                label: t("New Password", "كلمة المرور الجديدة"),
+                val: newPass,
+                set: setNewPass,
+              },
+              {
+                label: t("Confirm New Password", "تأكيد كلمة المرور الجديدة"),
+                val: confPass,
+                set: setConfPass,
+              },
+            ] as { label: string; val: string; set: (v: string) => void }[]
+          ).map((f, i) => (
             <div key={i} className="flex flex-col gap-1.5">
               <label className="text-slate-700 text-[13px] font-medium">
                 {f.label}
@@ -732,7 +797,7 @@ function SettingsTab({
           <button
             type="submit"
             disabled={pwSaving}
-            className="flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all"
+            className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "flex-row-reverse" : ""}`}
           >
             {pwSaving ? (
               <>
@@ -744,6 +809,220 @@ function SettingsTab({
             )}
           </button>
         </form>
+      </div>
+    </div>
+  );
+}
+
+// ─── RechargeModal ─────────────────────────────────────────────────────────────
+function RechargeModal({
+  userId,
+  isRTL,
+  t,
+  onClose,
+}: {
+  userId: string;
+  isRTL: boolean;
+  t: (en: string, ar: string) => string;
+  onClose: () => void;
+}) {
+  const [amount, setAmount] = useState("");
+  const [accName, setAccName] = useState("");
+  const [refNumber, setRefNumber] = useState("");
+  const [sending, setSending] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const INSTAPAY_NUMBER = "01006407387";
+  const WHATSAPP_NUMBER = "201006407387";
+  const shortId = userId.slice(0, 8).toUpperCase();
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSending(true);
+    await new Promise((r) => setTimeout(r, 800));
+    setSending(false);
+    setDone(true);
+  }
+
+  const inputCls =
+    "w-full bg-[#f8f9fc] border border-slate-200 rounded-xl px-4 py-3 text-[14px] text-slate-800 placeholder:text-slate-300 outline-none focus:border-[#00b4d8] focus:ring-2 focus:ring-[#00b4d8]/15 transition-all";
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+      <div
+        dir={isRTL ? "rtl" : "ltr"}
+        className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden max-h-[90vh] overflow-y-auto"
+      >
+        <div className="h-1 bg-gradient-to-r from-[#00b4d8] via-[#00b4d8]/60 to-transparent" />
+        <div className="p-7">
+          {done ? (
+            /* ── success ── */
+            <div className="flex flex-col items-center gap-4 py-4 text-center">
+              <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+              </div>
+              <h3 className="text-[#0a2540] font-bold text-[18px]">
+                {t("Request Sent!", "تم إرسال الطلب!")}
+              </h3>
+              <p className="text-slate-500 text-[14px] leading-relaxed">
+                {t(
+                  "Your recharge request has been submitted. Balance will be added within 24 hours.",
+                  "تم إرسال طلب الشحن. سيتم إضافة الرصيد خلال 24 ساعة.",
+                )}
+              </p>
+              <p className="text-slate-400 text-[13px] leading-relaxed">
+                {t(
+                  "If balance isn't added within 24 hours, contact us on WhatsApp and send your receipt.",
+                  "إذا لم يُضف الرصيد خلال 24 ساعة، تواصل معنا على واتساب وأرسل الإيصال.",
+                )}
+              </p>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noreferrer"
+                className={`inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#22c55e] text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] transition-all ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                {t("Contact WhatsApp", "تواصل واتساب")}
+              </a>
+              <button
+                onClick={onClose}
+                className="text-slate-400 text-[13px] hover:text-slate-600 transition-colors"
+              >
+                {t("Close", "إغلاق")}
+              </button>
+            </div>
+          ) : (
+            /* ── form ── */
+            <>
+              <div
+                className={`flex items-center justify-between mb-6 ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                <h3 className="text-[#0a2540] font-bold text-[18px]">
+                  {t("Recharge Balance", "شحن الرصيد")}
+                </h3>
+                <button
+                  onClick={onClose}
+                  className="text-slate-300 hover:text-slate-500 transition-colors text-[20px] leading-none w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* payment info */}
+              <div className="bg-[#f4f6f9] rounded-2xl p-4 mb-6 space-y-3">
+                <p className="text-slate-500 text-[13px] font-medium">
+                  {t("Available Payment Method", "طريقة الدفع المتاحة")}
+                </p>
+
+                <div
+                  className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
+                >
+                  <div className="w-8 h-8 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center flex-shrink-0">
+                    <Wallet className="w-4 h-4 text-[#00b4d8]" />
+                  </div>
+                  <div className={isRTL ? "text-right" : ""}>
+                    <div className="text-slate-700 text-[13px] font-semibold">
+                      InstaPay
+                    </div>
+                    <div className="text-slate-400 text-[12px]">
+                      {t("Transfer to number", "حوّل على الرقم")}
+                    </div>
+                  </div>
+                  <div className="ms-auto font-mono text-[#0a2540] font-bold text-[16px] select-all">
+                    {INSTAPAY_NUMBER}
+                  </div>
+                </div>
+
+                <div className="border-t border-slate-200 pt-3">
+                  <p className="text-slate-400 text-[12px] leading-relaxed">
+                    {t(
+                      "Include your Account ID in the transfer note:",
+                      "اذكر رقم حسابك في ملاحظة التحويل:",
+                    )}{" "}
+                    <span className="font-mono font-bold text-[#00b4d8] select-all">
+                      {shortId}
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-slate-700 text-[13px] font-medium">
+                    {t("Amount Sent (EGP)", "المبلغ المرسل (جنيه)")}{" "}
+                    <span className="text-[#00b4d8]">*</span>
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    placeholder="100"
+                    required
+                    className={inputCls}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-slate-700 text-[13px] font-medium">
+                    {t("Sender Account Name", "اسم الحساب المرسِل")}{" "}
+                    <span className="text-[#00b4d8]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={accName}
+                    onChange={(e) => setAccName(e.target.value)}
+                    placeholder={t(
+                      "Name on the sending account",
+                      "الاسم على الحساب المرسِل",
+                    )}
+                    required
+                    className={inputCls}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-slate-700 text-[13px] font-medium">
+                    {t("Transfer Reference Number", "الرقم المرجعي للتحويل")}{" "}
+                    <span className="text-[#00b4d8]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={refNumber}
+                    onChange={(e) => setRefNumber(e.target.value)}
+                    placeholder={t("e.g. TXN123456", "مثال: TXN123456")}
+                    required
+                    className={inputCls}
+                  />
+                </div>
+
+                <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3">
+                  <p className="text-amber-600 text-[12px] leading-relaxed">
+                    {t(
+                      `⚠ If balance is not added within 24 hours, contact us on WhatsApp at ${INSTAPAY_NUMBER} and send your receipt.`,
+                      `⚠ إذا لم يُضف الرصيد خلال 24 ساعة، تواصل معنا على واتساب على ${INSTAPAY_NUMBER} وأرسل الإيصال.`,
+                    )}
+                  </p>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="w-full flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl py-3.5 text-[15px] transition-all"
+                >
+                  {sending ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      {t("Sending...", "جاري الإرسال...")}
+                    </>
+                  ) : (
+                    t("Submit Request", "إرسال الطلب")
+                  )}
+                </button>
+              </form>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

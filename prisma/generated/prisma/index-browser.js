@@ -162,9 +162,13 @@ exports.Prisma.EmailVerifyTokenScalarFieldEnum = {
 exports.Prisma.CourseScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  titleAr: 'titleAr',
   description: 'description',
+  descriptionAr: 'descriptionAr',
   language: 'language',
   published: 'published',
+  price: 'price',
+  videoUrls: 'videoUrls',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
