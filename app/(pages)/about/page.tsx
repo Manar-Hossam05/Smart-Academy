@@ -107,7 +107,7 @@ const About = () => {
                 <motion.div
                   key={i}
                   {...fadeUp(i * 0.07)}
-                  className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
+                  className={`flex items-center gap-3 ${isRTL ? "" : ""}`}
                 >
                   <div className="w-9 h-9 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
                     <s.Icon className="w-4 h-4 text-secondary" />
@@ -302,9 +302,7 @@ const About = () => {
               </p>
 
               {/* diploma chips */}
-              <div
-                className={`flex flex-wrap gap-2 mt-5 ${isRTL ? "flex-row-reverse" : ""}`}
-              >
+              <div className={`flex flex-wrap gap-2 mt-5 ${isRTL ? "" : ""}`}>
                 {[
                   {
                     label: t("Childhood Psychiatry", "طب نفسية الأطفال"),
@@ -351,9 +349,7 @@ const About = () => {
                   )}
                 </p>
               </div>
-              <div
-                className={`flex gap-3 flex-shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}
-              >
+              <div className={`flex gap-3 flex-shrink-0 ${isRTL ? "" : ""}`}>
                 <Link
                   href="/courses"
                   className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-2xl text-[14px] shadow-lg shadow-secondary/20 hover:-translate-y-0.5 transition-all"

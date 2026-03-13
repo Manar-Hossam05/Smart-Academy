@@ -8,31 +8,30 @@ export async function PATCH(
 ) {
   try {
     const currentUser = await getCurrentUser();
-    if (!currentUser || currentUser.role !== "ADMIN") {
+    if (!currentUser || currentUser.role !== "ADMIN")
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
 
     const { id } = await params;
     const body = await req.json();
 
-    const course = await prisma.course.update({
-      where: { id },
-      data: {
-        title: body.title ?? undefined,
-        titleAr: body.titleAr ?? undefined,
-        description: body.description ?? undefined,
-        descriptionAr: body.descriptionAr ?? undefined,
-        published: body.published ?? undefined,
-        videoUrls: body.videoUrls ?? undefined,
-        price: body.price ?? undefined,
-        language: body.language ?? undefined,
-      },
-    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data: Record<string, any> = {};
+    if (body.title !== undefined) data.title = body.title;
+    if (body.titleAr !== undefined) data.titleAr = body.titleAr;
+    if (body.description !== undefined) data.description = body.description;
+    if (body.descriptionAr !== undefined)
+      data.descriptionAr = body.descriptionAr;
+    if (body.published !== undefined) data.published = body.published;
+    if (body.videoUrls !== undefined) data.videoUrls = body.videoUrls;
+    if (body.price !== undefined) data.price = body.price;
+    if (body.language !== undefined) data.language = body.language;
+    if (body.imageUrl !== undefined) data.imageUrl = body.imageUrl;
 
+    const course = await prisma.course.update({ where: { id }, data });
     return NextResponse.json({ success: true, data: course });
   } catch (err) {
     console.error("[ADMIN_COURSE_PATCH]", err);
-    return NextResponse.json({ error: "حدث خطأ" }, { status: 500 });
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }
 
@@ -42,15 +41,14 @@ export async function DELETE(
 ) {
   try {
     const currentUser = await getCurrentUser();
-    if (!currentUser || currentUser.role !== "ADMIN") {
+    if (!currentUser || currentUser.role !== "ADMIN")
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
 
     const { id } = await params;
     await prisma.course.delete({ where: { id } });
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("[ADMIN_COURSE_DELETE]", err);
-    return NextResponse.json({ error: "حدث خطأ" }, { status: 500 });
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }

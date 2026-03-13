@@ -91,9 +91,7 @@ export default function TermsPage() {
             key={i}
             className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm"
           >
-            <div
-              className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse" : ""}`}
-            >
+            <div className={`flex items-start gap-4 ${isRTL ? "" : ""}`}>
               <div className="w-1 self-stretch rounded-full bg-gradient-to-b from-[#00b4d8] to-[#00b4d8]/10 flex-shrink-0 hidden sm:block" />
               <div>
                 <h2 className="text-[#0a2540] font-bold text-[17px] mb-3">

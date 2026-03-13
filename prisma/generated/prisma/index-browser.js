@@ -170,7 +170,8 @@ exports.Prisma.CourseScalarFieldEnum = {
   price: 'price',
   videoUrls: 'videoUrls',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  imageUrl: 'imageUrl'
 };
 
 exports.Prisma.EnrollmentScalarFieldEnum = {

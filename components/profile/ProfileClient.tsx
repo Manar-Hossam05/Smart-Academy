@@ -151,12 +151,12 @@ export function ProfileClient() {
         <div className="max-w-5xl mx-auto px-6 py-8 relative z-10">
           {/* top bar */}
           <div
-            className={`flex items-center justify-between mb-8 ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`flex items-center justify-between mb-8 ${isRTL ? "" : ""}`}
           >
             <span className="text-white/40 text-[13px]">Smart Academy</span>
             <button
               onClick={handleLogout}
-              className={`flex items-center gap-2 text-white/50 hover:text-white text-[13px] transition-colors ${isRTL ? "flex-row-reverse" : ""}`}
+              className={`flex items-center gap-2 text-white/50 hover:text-white text-[13px] transition-colors ${isRTL ? "" : ""}`}
             >
               <LogOut className="w-4 h-4" />
               {t("Logout", "تسجيل الخروج")}
@@ -164,9 +164,7 @@ export function ProfileClient() {
           </div>
 
           {/* avatar + name */}
-          <div
-            className={`flex items-center gap-5 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}
-          >
+          <div className={`flex items-center gap-5 mb-8 ${isRTL ? "" : ""}`}>
             <div className="w-16 h-16 rounded-2xl bg-[#00b4d8]/20 border border-[#00b4d8]/30 flex items-center justify-center flex-shrink-0">
               <span className="text-[#00b4d8] font-serif font-bold text-[26px]">
                 {profile.fullName.charAt(0).toUpperCase()}
@@ -179,7 +177,7 @@ export function ProfileClient() {
               <p className="text-white/40 text-[13px]">{profile.email}</p>
               {!profile.emailVerified && (
                 <span
-                  className={`inline-flex items-center gap-1 text-amber-400 text-[11px] mt-1 ${isRTL ? "flex-row-reverse" : ""}`}
+                  className={`inline-flex items-center gap-1 text-amber-400 text-[11px] mt-1 ${isRTL ? "" : ""}`}
                 >
                   <AlertCircle className="w-3 h-3" />
                   {t("Email not verified", "البريد غير مفعّل")}
@@ -189,12 +187,12 @@ export function ProfileClient() {
           </div>
 
           {/* tabs */}
-          <div className={`flex gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`flex gap-1 ${isRTL ? "" : ""}`}>
             {tabs.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all ${isRTL ? "flex-row-reverse" : ""} ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all ${isRTL ? "" : ""} ${
                   activeTab === tab.key
                     ? "bg-white/10 text-white"
                     : "text-white/40 hover:text-white/70"
@@ -275,7 +273,7 @@ export function ProfileClient() {
 
               {/* account ID */}
               <div
-                className={`flex items-center gap-2 mb-5 p-3 bg-[#f4f6f9] rounded-xl ${isRTL ? "flex-row-reverse" : ""}`}
+                className={`flex items-center gap-2 mb-5 p-3 bg-[#f4f6f9] rounded-xl ${isRTL ? "" : ""}`}
               >
                 <span className="text-slate-400 text-[12px]">
                   {t("Account ID:", "رقم الحساب:")}
@@ -333,7 +331,7 @@ export function ProfileClient() {
             {profile.enrollments.length > 0 && (
               <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
                 <div
-                  className={`flex items-center justify-between mb-5 ${isRTL ? "flex-row-reverse" : ""}`}
+                  className={`flex items-center justify-between mb-5 ${isRTL ? "" : ""}`}
                 >
                   <h2 className="text-[#0a2540] font-bold text-[16px]">
                     {t("Recent Courses", "آخر الكورسات")}
@@ -393,7 +391,7 @@ export function ProfileClient() {
               <div className="relative z-10">
                 {/* account ID */}
                 <div
-                  className={`flex items-center gap-2 mb-4 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}
+                  className={`flex items-center gap-2 mb-4 flex-wrap ${isRTL ? "" : ""}`}
                 >
                   <span className="text-white/30 text-[11px] uppercase tracking-wider">
                     {t("Account ID", "رقم الحساب")}
@@ -416,7 +414,7 @@ export function ProfileClient() {
 
                 <button
                   onClick={() => setShowRecharge(true)}
-                  className={`inline-flex items-center gap-2 bg-[#00b4d8] hover:bg-[#00b4d8]/90 text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] shadow-lg shadow-[#00b4d8]/20 transition-all hover:-translate-y-0.5 ${isRTL ? "flex-row-reverse" : ""}`}
+                  className={`inline-flex items-center gap-2 bg-[#00b4d8] hover:bg-[#00b4d8]/90 text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] shadow-lg shadow-[#00b4d8]/20 transition-all hover:-translate-y-0.5 ${isRTL ? "" : ""}`}
                 >
                   <Plus className="w-4 h-4" />
                   {t("Recharge Balance", "شحن الرصيد")}
@@ -443,10 +441,10 @@ export function ProfileClient() {
                   {profile.transactions.map((tx) => (
                     <div
                       key={tx.id}
-                      className={`flex items-center justify-between p-4 rounded-xl bg-[#f8f9fc] ${isRTL ? "flex-row-reverse" : ""}`}
+                      className={`flex items-center justify-between p-4 rounded-xl bg-[#f8f9fc] ${isRTL ? "" : ""}`}
                     >
                       <div
-                        className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
+                        className={`flex items-center gap-3 ${isRTL ? "" : ""}`}
                       >
                         <div
                           className={`w-8 h-8 rounded-xl flex items-center justify-center ${tx.type === "CREDIT" ? "bg-emerald-50" : "bg-red-50"}`}
@@ -526,11 +524,11 @@ function CourseCard({
   return (
     <div className="bg-[#f8f9fc] rounded-2xl border border-slate-100 p-5">
       <div
-        className={`flex items-start justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}
+        className={`flex items-start justify-between gap-4 ${isRTL ? "" : ""}`}
       >
         <div className="flex-1 min-w-0">
           <div
-            className={`flex items-center gap-2 mb-1 flex-wrap ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`flex items-center gap-2 mb-1 flex-wrap ${isRTL ? "" : ""}`}
           >
             <h3 className="text-slate-800 font-semibold text-[14px] truncate">
               {enrollment.course.title}
@@ -546,9 +544,7 @@ function CourseCard({
               {enrollment.course.description}
             </p>
           )}
-          <div
-            className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
-          >
+          <div className={`flex items-center gap-3 ${isRTL ? "" : ""}`}>
             <div className="flex-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
               <div
                 className="h-full bg-[#00b4d8] rounded-full transition-all"
@@ -730,7 +726,7 @@ function SettingsTab({
           <button
             type="submit"
             disabled={saving}
-            className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "" : ""}`}
           >
             {saving ? (
               <>
@@ -797,7 +793,7 @@ function SettingsTab({
           <button
             type="submit"
             disabled={pwSaving}
-            className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "flex-row-reverse" : ""}`}
+            className={`flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#0d3060] disabled:opacity-60 text-white font-semibold rounded-xl px-6 py-3 text-[14px] transition-all ${isRTL ? "" : ""}`}
           >
             {pwSaving ? (
               <>
@@ -880,7 +876,7 @@ function RechargeModal({
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noreferrer"
-                className={`inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#22c55e] text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] transition-all ${isRTL ? "flex-row-reverse" : ""}`}
+                className={`inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#22c55e] text-white font-semibold px-5 py-2.5 rounded-xl text-[14px] transition-all ${isRTL ? "" : ""}`}
               >
                 {t("Contact WhatsApp", "تواصل واتساب")}
               </a>
@@ -895,7 +891,7 @@ function RechargeModal({
             /* ── form ── */
             <>
               <div
-                className={`flex items-center justify-between mb-6 ${isRTL ? "flex-row-reverse" : ""}`}
+                className={`flex items-center justify-between mb-6 ${isRTL ? "" : ""}`}
               >
                 <h3 className="text-[#0a2540] font-bold text-[18px]">
                   {t("Recharge Balance", "شحن الرصيد")}
@@ -914,9 +910,7 @@ function RechargeModal({
                   {t("Available Payment Method", "طريقة الدفع المتاحة")}
                 </p>
 
-                <div
-                  className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
-                >
+                <div className={`flex items-center gap-3 ${isRTL ? "" : ""}`}>
                   <div className="w-8 h-8 rounded-xl bg-[#00b4d8]/10 flex items-center justify-center flex-shrink-0">
                     <Wallet className="w-4 h-4 text-[#00b4d8]" />
                   </div>
