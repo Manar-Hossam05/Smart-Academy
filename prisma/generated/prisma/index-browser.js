@@ -180,8 +180,8 @@ exports.Prisma.EnrollmentScalarFieldEnum = {
   courseId: 'courseId',
   status: 'status',
   progress: 'progress',
-  enrolledAt: 'enrolledAt',
-  completedAt: 'completedAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.BalanceScalarFieldEnum = {
@@ -198,6 +198,22 @@ exports.Prisma.TransactionScalarFieldEnum = {
   amount: 'amount',
   description: 'description',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.VideoProgressScalarFieldEnum = {
+  id: 'id',
+  enrollmentId: 'enrollmentId',
+  videoIndex: 'videoIndex',
+  watched: 'watched',
+  watchedAt: 'watchedAt'
+};
+
+exports.Prisma.CertificateScalarFieldEnum = {
+  id: 'id',
+  enrollmentId: 'enrollmentId',
+  userId: 'userId',
+  courseId: 'courseId',
+  issuedAt: 'issuedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -238,7 +254,9 @@ exports.Prisma.ModelName = {
   Course: 'Course',
   Enrollment: 'Enrollment',
   Balance: 'Balance',
-  Transaction: 'Transaction'
+  Transaction: 'Transaction',
+  VideoProgress: 'VideoProgress',
+  Certificate: 'Certificate'
 };
 
 /**

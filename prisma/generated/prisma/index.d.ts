@@ -53,6 +53,16 @@ export type Balance = $Result.DefaultSelection<Prisma.$BalancePayload>
  * 
  */
 export type Transaction = $Result.DefaultSelection<Prisma.$TransactionPayload>
+/**
+ * Model VideoProgress
+ * 
+ */
+export type VideoProgress = $Result.DefaultSelection<Prisma.$VideoProgressPayload>
+/**
+ * Model Certificate
+ * 
+ */
+export type Certificate = $Result.DefaultSelection<Prisma.$CertificatePayload>
 
 /**
  * Enums
@@ -292,6 +302,26 @@ export class PrismaClient<
     * ```
     */
   get transaction(): Prisma.TransactionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.videoProgress`: Exposes CRUD operations for the **VideoProgress** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more VideoProgresses
+    * const videoProgresses = await prisma.videoProgress.findMany()
+    * ```
+    */
+  get videoProgress(): Prisma.VideoProgressDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.certificate`: Exposes CRUD operations for the **Certificate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Certificates
+    * const certificates = await prisma.certificate.findMany()
+    * ```
+    */
+  get certificate(): Prisma.CertificateDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -733,7 +763,9 @@ export namespace Prisma {
     Course: 'Course',
     Enrollment: 'Enrollment',
     Balance: 'Balance',
-    Transaction: 'Transaction'
+    Transaction: 'Transaction',
+    VideoProgress: 'VideoProgress',
+    Certificate: 'Certificate'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -749,7 +781,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "passwordResetToken" | "emailVerifyToken" | "course" | "enrollment" | "balance" | "transaction"
+      modelProps: "user" | "session" | "passwordResetToken" | "emailVerifyToken" | "course" | "enrollment" | "balance" | "transaction" | "videoProgress" | "certificate"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1345,6 +1377,154 @@ export namespace Prisma {
           }
         }
       }
+      VideoProgress: {
+        payload: Prisma.$VideoProgressPayload<ExtArgs>
+        fields: Prisma.VideoProgressFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VideoProgressFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VideoProgressFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>
+          }
+          findFirst: {
+            args: Prisma.VideoProgressFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VideoProgressFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>
+          }
+          findMany: {
+            args: Prisma.VideoProgressFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>[]
+          }
+          create: {
+            args: Prisma.VideoProgressCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>
+          }
+          createMany: {
+            args: Prisma.VideoProgressCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VideoProgressCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>[]
+          }
+          delete: {
+            args: Prisma.VideoProgressDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>
+          }
+          update: {
+            args: Prisma.VideoProgressUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>
+          }
+          deleteMany: {
+            args: Prisma.VideoProgressDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VideoProgressUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VideoProgressUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>[]
+          }
+          upsert: {
+            args: Prisma.VideoProgressUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoProgressPayload>
+          }
+          aggregate: {
+            args: Prisma.VideoProgressAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVideoProgress>
+          }
+          groupBy: {
+            args: Prisma.VideoProgressGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VideoProgressGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VideoProgressCountArgs<ExtArgs>
+            result: $Utils.Optional<VideoProgressCountAggregateOutputType> | number
+          }
+        }
+      }
+      Certificate: {
+        payload: Prisma.$CertificatePayload<ExtArgs>
+        fields: Prisma.CertificateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CertificateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CertificateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          findFirst: {
+            args: Prisma.CertificateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CertificateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          findMany: {
+            args: Prisma.CertificateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>[]
+          }
+          create: {
+            args: Prisma.CertificateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          createMany: {
+            args: Prisma.CertificateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CertificateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>[]
+          }
+          delete: {
+            args: Prisma.CertificateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          update: {
+            args: Prisma.CertificateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          deleteMany: {
+            args: Prisma.CertificateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CertificateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CertificateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>[]
+          }
+          upsert: {
+            args: Prisma.CertificateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CertificatePayload>
+          }
+          aggregate: {
+            args: Prisma.CertificateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCertificate>
+          }
+          groupBy: {
+            args: Prisma.CertificateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CertificateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CertificateCountArgs<ExtArgs>
+            result: $Utils.Optional<CertificateCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1461,6 +1641,8 @@ export namespace Prisma {
     enrollment?: EnrollmentOmit
     balance?: BalanceOmit
     transaction?: TransactionOmit
+    videoProgress?: VideoProgressOmit
+    certificate?: CertificateOmit
   }
 
   /* Types for Logging */
@@ -1631,6 +1813,37 @@ export namespace Prisma {
    */
   export type CourseCountOutputTypeCountEnrollmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EnrollmentWhereInput
+  }
+
+
+  /**
+   * Count Type EnrollmentCountOutputType
+   */
+
+  export type EnrollmentCountOutputType = {
+    videoProgress: number
+  }
+
+  export type EnrollmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    videoProgress?: boolean | EnrollmentCountOutputTypeCountVideoProgressArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EnrollmentCountOutputType without action
+   */
+  export type EnrollmentCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnrollmentCountOutputType
+     */
+    select?: EnrollmentCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EnrollmentCountOutputType without action
+   */
+  export type EnrollmentCountOutputTypeCountVideoProgressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoProgressWhereInput
   }
 
 
@@ -7325,8 +7538,8 @@ export namespace Prisma {
     courseId: string | null
     status: $Enums.EnrollmentStatus | null
     progress: number | null
-    enrolledAt: Date | null
-    completedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type EnrollmentMaxAggregateOutputType = {
@@ -7335,8 +7548,8 @@ export namespace Prisma {
     courseId: string | null
     status: $Enums.EnrollmentStatus | null
     progress: number | null
-    enrolledAt: Date | null
-    completedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type EnrollmentCountAggregateOutputType = {
@@ -7345,8 +7558,8 @@ export namespace Prisma {
     courseId: number
     status: number
     progress: number
-    enrolledAt: number
-    completedAt: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -7365,8 +7578,8 @@ export namespace Prisma {
     courseId?: true
     status?: true
     progress?: true
-    enrolledAt?: true
-    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type EnrollmentMaxAggregateInputType = {
@@ -7375,8 +7588,8 @@ export namespace Prisma {
     courseId?: true
     status?: true
     progress?: true
-    enrolledAt?: true
-    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type EnrollmentCountAggregateInputType = {
@@ -7385,8 +7598,8 @@ export namespace Prisma {
     courseId?: true
     status?: true
     progress?: true
-    enrolledAt?: true
-    completedAt?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -7482,8 +7695,8 @@ export namespace Prisma {
     courseId: string
     status: $Enums.EnrollmentStatus
     progress: number
-    enrolledAt: Date
-    completedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
     _count: EnrollmentCountAggregateOutputType | null
     _avg: EnrollmentAvgAggregateOutputType | null
     _sum: EnrollmentSumAggregateOutputType | null
@@ -7511,10 +7724,13 @@ export namespace Prisma {
     courseId?: boolean
     status?: boolean
     progress?: boolean
-    enrolledAt?: boolean
-    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
+    videoProgress?: boolean | Enrollment$videoProgressArgs<ExtArgs>
+    certificate?: boolean | Enrollment$certificateArgs<ExtArgs>
+    _count?: boolean | EnrollmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["enrollment"]>
 
   export type EnrollmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7523,8 +7739,8 @@ export namespace Prisma {
     courseId?: boolean
     status?: boolean
     progress?: boolean
-    enrolledAt?: boolean
-    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["enrollment"]>
@@ -7535,8 +7751,8 @@ export namespace Prisma {
     courseId?: boolean
     status?: boolean
     progress?: boolean
-    enrolledAt?: boolean
-    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["enrollment"]>
@@ -7547,14 +7763,17 @@ export namespace Prisma {
     courseId?: boolean
     status?: boolean
     progress?: boolean
-    enrolledAt?: boolean
-    completedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type EnrollmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "courseId" | "status" | "progress" | "enrolledAt" | "completedAt", ExtArgs["result"]["enrollment"]>
+  export type EnrollmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "courseId" | "status" | "progress" | "createdAt" | "updatedAt", ExtArgs["result"]["enrollment"]>
   export type EnrollmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     course?: boolean | CourseDefaultArgs<ExtArgs>
+    videoProgress?: boolean | Enrollment$videoProgressArgs<ExtArgs>
+    certificate?: boolean | Enrollment$certificateArgs<ExtArgs>
+    _count?: boolean | EnrollmentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type EnrollmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -7570,6 +7789,8 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       course: Prisma.$CoursePayload<ExtArgs>
+      videoProgress: Prisma.$VideoProgressPayload<ExtArgs>[]
+      certificate: Prisma.$CertificatePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7577,8 +7798,8 @@ export namespace Prisma {
       courseId: string
       status: $Enums.EnrollmentStatus
       progress: number
-      enrolledAt: Date
-      completedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["enrollment"]>
     composites: {}
   }
@@ -7975,6 +8196,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     course<T extends CourseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CourseDefaultArgs<ExtArgs>>): Prisma__CourseClient<$Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    videoProgress<T extends Enrollment$videoProgressArgs<ExtArgs> = {}>(args?: Subset<T, Enrollment$videoProgressArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    certificate<T extends Enrollment$certificateArgs<ExtArgs> = {}>(args?: Subset<T, Enrollment$certificateArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8009,8 +8232,8 @@ export namespace Prisma {
     readonly courseId: FieldRef<"Enrollment", 'String'>
     readonly status: FieldRef<"Enrollment", 'EnrollmentStatus'>
     readonly progress: FieldRef<"Enrollment", 'Int'>
-    readonly enrolledAt: FieldRef<"Enrollment", 'DateTime'>
-    readonly completedAt: FieldRef<"Enrollment", 'DateTime'>
+    readonly createdAt: FieldRef<"Enrollment", 'DateTime'>
+    readonly updatedAt: FieldRef<"Enrollment", 'DateTime'>
   }
     
 
@@ -8404,6 +8627,49 @@ export namespace Prisma {
      * Limit how many Enrollments to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Enrollment.videoProgress
+   */
+  export type Enrollment$videoProgressArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    where?: VideoProgressWhereInput
+    orderBy?: VideoProgressOrderByWithRelationInput | VideoProgressOrderByWithRelationInput[]
+    cursor?: VideoProgressWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VideoProgressScalarFieldEnum | VideoProgressScalarFieldEnum[]
+  }
+
+  /**
+   * Enrollment.certificate
+   */
+  export type Enrollment$certificateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    where?: CertificateWhereInput
   }
 
   /**
@@ -10610,6 +10876,2156 @@ export namespace Prisma {
 
 
   /**
+   * Model VideoProgress
+   */
+
+  export type AggregateVideoProgress = {
+    _count: VideoProgressCountAggregateOutputType | null
+    _avg: VideoProgressAvgAggregateOutputType | null
+    _sum: VideoProgressSumAggregateOutputType | null
+    _min: VideoProgressMinAggregateOutputType | null
+    _max: VideoProgressMaxAggregateOutputType | null
+  }
+
+  export type VideoProgressAvgAggregateOutputType = {
+    videoIndex: number | null
+  }
+
+  export type VideoProgressSumAggregateOutputType = {
+    videoIndex: number | null
+  }
+
+  export type VideoProgressMinAggregateOutputType = {
+    id: string | null
+    enrollmentId: string | null
+    videoIndex: number | null
+    watched: boolean | null
+    watchedAt: Date | null
+  }
+
+  export type VideoProgressMaxAggregateOutputType = {
+    id: string | null
+    enrollmentId: string | null
+    videoIndex: number | null
+    watched: boolean | null
+    watchedAt: Date | null
+  }
+
+  export type VideoProgressCountAggregateOutputType = {
+    id: number
+    enrollmentId: number
+    videoIndex: number
+    watched: number
+    watchedAt: number
+    _all: number
+  }
+
+
+  export type VideoProgressAvgAggregateInputType = {
+    videoIndex?: true
+  }
+
+  export type VideoProgressSumAggregateInputType = {
+    videoIndex?: true
+  }
+
+  export type VideoProgressMinAggregateInputType = {
+    id?: true
+    enrollmentId?: true
+    videoIndex?: true
+    watched?: true
+    watchedAt?: true
+  }
+
+  export type VideoProgressMaxAggregateInputType = {
+    id?: true
+    enrollmentId?: true
+    videoIndex?: true
+    watched?: true
+    watchedAt?: true
+  }
+
+  export type VideoProgressCountAggregateInputType = {
+    id?: true
+    enrollmentId?: true
+    videoIndex?: true
+    watched?: true
+    watchedAt?: true
+    _all?: true
+  }
+
+  export type VideoProgressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VideoProgress to aggregate.
+     */
+    where?: VideoProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VideoProgresses to fetch.
+     */
+    orderBy?: VideoProgressOrderByWithRelationInput | VideoProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VideoProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VideoProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VideoProgresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned VideoProgresses
+    **/
+    _count?: true | VideoProgressCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VideoProgressAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VideoProgressSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VideoProgressMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VideoProgressMaxAggregateInputType
+  }
+
+  export type GetVideoProgressAggregateType<T extends VideoProgressAggregateArgs> = {
+        [P in keyof T & keyof AggregateVideoProgress]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVideoProgress[P]>
+      : GetScalarType<T[P], AggregateVideoProgress[P]>
+  }
+
+
+
+
+  export type VideoProgressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoProgressWhereInput
+    orderBy?: VideoProgressOrderByWithAggregationInput | VideoProgressOrderByWithAggregationInput[]
+    by: VideoProgressScalarFieldEnum[] | VideoProgressScalarFieldEnum
+    having?: VideoProgressScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VideoProgressCountAggregateInputType | true
+    _avg?: VideoProgressAvgAggregateInputType
+    _sum?: VideoProgressSumAggregateInputType
+    _min?: VideoProgressMinAggregateInputType
+    _max?: VideoProgressMaxAggregateInputType
+  }
+
+  export type VideoProgressGroupByOutputType = {
+    id: string
+    enrollmentId: string
+    videoIndex: number
+    watched: boolean
+    watchedAt: Date | null
+    _count: VideoProgressCountAggregateOutputType | null
+    _avg: VideoProgressAvgAggregateOutputType | null
+    _sum: VideoProgressSumAggregateOutputType | null
+    _min: VideoProgressMinAggregateOutputType | null
+    _max: VideoProgressMaxAggregateOutputType | null
+  }
+
+  type GetVideoProgressGroupByPayload<T extends VideoProgressGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VideoProgressGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VideoProgressGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VideoProgressGroupByOutputType[P]>
+            : GetScalarType<T[P], VideoProgressGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VideoProgressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    enrollmentId?: boolean
+    videoIndex?: boolean
+    watched?: boolean
+    watchedAt?: boolean
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["videoProgress"]>
+
+  export type VideoProgressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    enrollmentId?: boolean
+    videoIndex?: boolean
+    watched?: boolean
+    watchedAt?: boolean
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["videoProgress"]>
+
+  export type VideoProgressSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    enrollmentId?: boolean
+    videoIndex?: boolean
+    watched?: boolean
+    watchedAt?: boolean
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["videoProgress"]>
+
+  export type VideoProgressSelectScalar = {
+    id?: boolean
+    enrollmentId?: boolean
+    videoIndex?: boolean
+    watched?: boolean
+    watchedAt?: boolean
+  }
+
+  export type VideoProgressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "enrollmentId" | "videoIndex" | "watched" | "watchedAt", ExtArgs["result"]["videoProgress"]>
+  export type VideoProgressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }
+  export type VideoProgressIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }
+  export type VideoProgressIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }
+
+  export type $VideoProgressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "VideoProgress"
+    objects: {
+      enrollment: Prisma.$EnrollmentPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      enrollmentId: string
+      videoIndex: number
+      watched: boolean
+      watchedAt: Date | null
+    }, ExtArgs["result"]["videoProgress"]>
+    composites: {}
+  }
+
+  type VideoProgressGetPayload<S extends boolean | null | undefined | VideoProgressDefaultArgs> = $Result.GetResult<Prisma.$VideoProgressPayload, S>
+
+  type VideoProgressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VideoProgressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VideoProgressCountAggregateInputType | true
+    }
+
+  export interface VideoProgressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VideoProgress'], meta: { name: 'VideoProgress' } }
+    /**
+     * Find zero or one VideoProgress that matches the filter.
+     * @param {VideoProgressFindUniqueArgs} args - Arguments to find a VideoProgress
+     * @example
+     * // Get one VideoProgress
+     * const videoProgress = await prisma.videoProgress.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VideoProgressFindUniqueArgs>(args: SelectSubset<T, VideoProgressFindUniqueArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one VideoProgress that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VideoProgressFindUniqueOrThrowArgs} args - Arguments to find a VideoProgress
+     * @example
+     * // Get one VideoProgress
+     * const videoProgress = await prisma.videoProgress.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VideoProgressFindUniqueOrThrowArgs>(args: SelectSubset<T, VideoProgressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VideoProgress that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoProgressFindFirstArgs} args - Arguments to find a VideoProgress
+     * @example
+     * // Get one VideoProgress
+     * const videoProgress = await prisma.videoProgress.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VideoProgressFindFirstArgs>(args?: SelectSubset<T, VideoProgressFindFirstArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first VideoProgress that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoProgressFindFirstOrThrowArgs} args - Arguments to find a VideoProgress
+     * @example
+     * // Get one VideoProgress
+     * const videoProgress = await prisma.videoProgress.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VideoProgressFindFirstOrThrowArgs>(args?: SelectSubset<T, VideoProgressFindFirstOrThrowArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more VideoProgresses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoProgressFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all VideoProgresses
+     * const videoProgresses = await prisma.videoProgress.findMany()
+     * 
+     * // Get first 10 VideoProgresses
+     * const videoProgresses = await prisma.videoProgress.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const videoProgressWithIdOnly = await prisma.videoProgress.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VideoProgressFindManyArgs>(args?: SelectSubset<T, VideoProgressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a VideoProgress.
+     * @param {VideoProgressCreateArgs} args - Arguments to create a VideoProgress.
+     * @example
+     * // Create one VideoProgress
+     * const VideoProgress = await prisma.videoProgress.create({
+     *   data: {
+     *     // ... data to create a VideoProgress
+     *   }
+     * })
+     * 
+     */
+    create<T extends VideoProgressCreateArgs>(args: SelectSubset<T, VideoProgressCreateArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many VideoProgresses.
+     * @param {VideoProgressCreateManyArgs} args - Arguments to create many VideoProgresses.
+     * @example
+     * // Create many VideoProgresses
+     * const videoProgress = await prisma.videoProgress.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VideoProgressCreateManyArgs>(args?: SelectSubset<T, VideoProgressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many VideoProgresses and returns the data saved in the database.
+     * @param {VideoProgressCreateManyAndReturnArgs} args - Arguments to create many VideoProgresses.
+     * @example
+     * // Create many VideoProgresses
+     * const videoProgress = await prisma.videoProgress.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many VideoProgresses and only return the `id`
+     * const videoProgressWithIdOnly = await prisma.videoProgress.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VideoProgressCreateManyAndReturnArgs>(args?: SelectSubset<T, VideoProgressCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a VideoProgress.
+     * @param {VideoProgressDeleteArgs} args - Arguments to delete one VideoProgress.
+     * @example
+     * // Delete one VideoProgress
+     * const VideoProgress = await prisma.videoProgress.delete({
+     *   where: {
+     *     // ... filter to delete one VideoProgress
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VideoProgressDeleteArgs>(args: SelectSubset<T, VideoProgressDeleteArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one VideoProgress.
+     * @param {VideoProgressUpdateArgs} args - Arguments to update one VideoProgress.
+     * @example
+     * // Update one VideoProgress
+     * const videoProgress = await prisma.videoProgress.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VideoProgressUpdateArgs>(args: SelectSubset<T, VideoProgressUpdateArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more VideoProgresses.
+     * @param {VideoProgressDeleteManyArgs} args - Arguments to filter VideoProgresses to delete.
+     * @example
+     * // Delete a few VideoProgresses
+     * const { count } = await prisma.videoProgress.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VideoProgressDeleteManyArgs>(args?: SelectSubset<T, VideoProgressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VideoProgresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoProgressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many VideoProgresses
+     * const videoProgress = await prisma.videoProgress.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VideoProgressUpdateManyArgs>(args: SelectSubset<T, VideoProgressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VideoProgresses and returns the data updated in the database.
+     * @param {VideoProgressUpdateManyAndReturnArgs} args - Arguments to update many VideoProgresses.
+     * @example
+     * // Update many VideoProgresses
+     * const videoProgress = await prisma.videoProgress.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more VideoProgresses and only return the `id`
+     * const videoProgressWithIdOnly = await prisma.videoProgress.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VideoProgressUpdateManyAndReturnArgs>(args: SelectSubset<T, VideoProgressUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one VideoProgress.
+     * @param {VideoProgressUpsertArgs} args - Arguments to update or create a VideoProgress.
+     * @example
+     * // Update or create a VideoProgress
+     * const videoProgress = await prisma.videoProgress.upsert({
+     *   create: {
+     *     // ... data to create a VideoProgress
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the VideoProgress we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VideoProgressUpsertArgs>(args: SelectSubset<T, VideoProgressUpsertArgs<ExtArgs>>): Prisma__VideoProgressClient<$Result.GetResult<Prisma.$VideoProgressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of VideoProgresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoProgressCountArgs} args - Arguments to filter VideoProgresses to count.
+     * @example
+     * // Count the number of VideoProgresses
+     * const count = await prisma.videoProgress.count({
+     *   where: {
+     *     // ... the filter for the VideoProgresses we want to count
+     *   }
+     * })
+    **/
+    count<T extends VideoProgressCountArgs>(
+      args?: Subset<T, VideoProgressCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VideoProgressCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a VideoProgress.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoProgressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VideoProgressAggregateArgs>(args: Subset<T, VideoProgressAggregateArgs>): Prisma.PrismaPromise<GetVideoProgressAggregateType<T>>
+
+    /**
+     * Group by VideoProgress.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoProgressGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VideoProgressGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VideoProgressGroupByArgs['orderBy'] }
+        : { orderBy?: VideoProgressGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VideoProgressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVideoProgressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the VideoProgress model
+   */
+  readonly fields: VideoProgressFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for VideoProgress.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VideoProgressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    enrollment<T extends EnrollmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EnrollmentDefaultArgs<ExtArgs>>): Prisma__EnrollmentClient<$Result.GetResult<Prisma.$EnrollmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the VideoProgress model
+   */
+  interface VideoProgressFieldRefs {
+    readonly id: FieldRef<"VideoProgress", 'String'>
+    readonly enrollmentId: FieldRef<"VideoProgress", 'String'>
+    readonly videoIndex: FieldRef<"VideoProgress", 'Int'>
+    readonly watched: FieldRef<"VideoProgress", 'Boolean'>
+    readonly watchedAt: FieldRef<"VideoProgress", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * VideoProgress findUnique
+   */
+  export type VideoProgressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * Filter, which VideoProgress to fetch.
+     */
+    where: VideoProgressWhereUniqueInput
+  }
+
+  /**
+   * VideoProgress findUniqueOrThrow
+   */
+  export type VideoProgressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * Filter, which VideoProgress to fetch.
+     */
+    where: VideoProgressWhereUniqueInput
+  }
+
+  /**
+   * VideoProgress findFirst
+   */
+  export type VideoProgressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * Filter, which VideoProgress to fetch.
+     */
+    where?: VideoProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VideoProgresses to fetch.
+     */
+    orderBy?: VideoProgressOrderByWithRelationInput | VideoProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VideoProgresses.
+     */
+    cursor?: VideoProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VideoProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VideoProgresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VideoProgresses.
+     */
+    distinct?: VideoProgressScalarFieldEnum | VideoProgressScalarFieldEnum[]
+  }
+
+  /**
+   * VideoProgress findFirstOrThrow
+   */
+  export type VideoProgressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * Filter, which VideoProgress to fetch.
+     */
+    where?: VideoProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VideoProgresses to fetch.
+     */
+    orderBy?: VideoProgressOrderByWithRelationInput | VideoProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for VideoProgresses.
+     */
+    cursor?: VideoProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VideoProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VideoProgresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of VideoProgresses.
+     */
+    distinct?: VideoProgressScalarFieldEnum | VideoProgressScalarFieldEnum[]
+  }
+
+  /**
+   * VideoProgress findMany
+   */
+  export type VideoProgressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * Filter, which VideoProgresses to fetch.
+     */
+    where?: VideoProgressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of VideoProgresses to fetch.
+     */
+    orderBy?: VideoProgressOrderByWithRelationInput | VideoProgressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing VideoProgresses.
+     */
+    cursor?: VideoProgressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` VideoProgresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` VideoProgresses.
+     */
+    skip?: number
+    distinct?: VideoProgressScalarFieldEnum | VideoProgressScalarFieldEnum[]
+  }
+
+  /**
+   * VideoProgress create
+   */
+  export type VideoProgressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * The data needed to create a VideoProgress.
+     */
+    data: XOR<VideoProgressCreateInput, VideoProgressUncheckedCreateInput>
+  }
+
+  /**
+   * VideoProgress createMany
+   */
+  export type VideoProgressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many VideoProgresses.
+     */
+    data: VideoProgressCreateManyInput | VideoProgressCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * VideoProgress createManyAndReturn
+   */
+  export type VideoProgressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * The data used to create many VideoProgresses.
+     */
+    data: VideoProgressCreateManyInput | VideoProgressCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VideoProgress update
+   */
+  export type VideoProgressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * The data needed to update a VideoProgress.
+     */
+    data: XOR<VideoProgressUpdateInput, VideoProgressUncheckedUpdateInput>
+    /**
+     * Choose, which VideoProgress to update.
+     */
+    where: VideoProgressWhereUniqueInput
+  }
+
+  /**
+   * VideoProgress updateMany
+   */
+  export type VideoProgressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update VideoProgresses.
+     */
+    data: XOR<VideoProgressUpdateManyMutationInput, VideoProgressUncheckedUpdateManyInput>
+    /**
+     * Filter which VideoProgresses to update
+     */
+    where?: VideoProgressWhereInput
+    /**
+     * Limit how many VideoProgresses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VideoProgress updateManyAndReturn
+   */
+  export type VideoProgressUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * The data used to update VideoProgresses.
+     */
+    data: XOR<VideoProgressUpdateManyMutationInput, VideoProgressUncheckedUpdateManyInput>
+    /**
+     * Filter which VideoProgresses to update
+     */
+    where?: VideoProgressWhereInput
+    /**
+     * Limit how many VideoProgresses to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * VideoProgress upsert
+   */
+  export type VideoProgressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * The filter to search for the VideoProgress to update in case it exists.
+     */
+    where: VideoProgressWhereUniqueInput
+    /**
+     * In case the VideoProgress found by the `where` argument doesn't exist, create a new VideoProgress with this data.
+     */
+    create: XOR<VideoProgressCreateInput, VideoProgressUncheckedCreateInput>
+    /**
+     * In case the VideoProgress was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VideoProgressUpdateInput, VideoProgressUncheckedUpdateInput>
+  }
+
+  /**
+   * VideoProgress delete
+   */
+  export type VideoProgressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+    /**
+     * Filter which VideoProgress to delete.
+     */
+    where: VideoProgressWhereUniqueInput
+  }
+
+  /**
+   * VideoProgress deleteMany
+   */
+  export type VideoProgressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which VideoProgresses to delete
+     */
+    where?: VideoProgressWhereInput
+    /**
+     * Limit how many VideoProgresses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * VideoProgress without action
+   */
+  export type VideoProgressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VideoProgress
+     */
+    select?: VideoProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the VideoProgress
+     */
+    omit?: VideoProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoProgressInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Certificate
+   */
+
+  export type AggregateCertificate = {
+    _count: CertificateCountAggregateOutputType | null
+    _min: CertificateMinAggregateOutputType | null
+    _max: CertificateMaxAggregateOutputType | null
+  }
+
+  export type CertificateMinAggregateOutputType = {
+    id: string | null
+    enrollmentId: string | null
+    userId: string | null
+    courseId: string | null
+    issuedAt: Date | null
+  }
+
+  export type CertificateMaxAggregateOutputType = {
+    id: string | null
+    enrollmentId: string | null
+    userId: string | null
+    courseId: string | null
+    issuedAt: Date | null
+  }
+
+  export type CertificateCountAggregateOutputType = {
+    id: number
+    enrollmentId: number
+    userId: number
+    courseId: number
+    issuedAt: number
+    _all: number
+  }
+
+
+  export type CertificateMinAggregateInputType = {
+    id?: true
+    enrollmentId?: true
+    userId?: true
+    courseId?: true
+    issuedAt?: true
+  }
+
+  export type CertificateMaxAggregateInputType = {
+    id?: true
+    enrollmentId?: true
+    userId?: true
+    courseId?: true
+    issuedAt?: true
+  }
+
+  export type CertificateCountAggregateInputType = {
+    id?: true
+    enrollmentId?: true
+    userId?: true
+    courseId?: true
+    issuedAt?: true
+    _all?: true
+  }
+
+  export type CertificateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Certificate to aggregate.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Certificates
+    **/
+    _count?: true | CertificateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CertificateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CertificateMaxAggregateInputType
+  }
+
+  export type GetCertificateAggregateType<T extends CertificateAggregateArgs> = {
+        [P in keyof T & keyof AggregateCertificate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCertificate[P]>
+      : GetScalarType<T[P], AggregateCertificate[P]>
+  }
+
+
+
+
+  export type CertificateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CertificateWhereInput
+    orderBy?: CertificateOrderByWithAggregationInput | CertificateOrderByWithAggregationInput[]
+    by: CertificateScalarFieldEnum[] | CertificateScalarFieldEnum
+    having?: CertificateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CertificateCountAggregateInputType | true
+    _min?: CertificateMinAggregateInputType
+    _max?: CertificateMaxAggregateInputType
+  }
+
+  export type CertificateGroupByOutputType = {
+    id: string
+    enrollmentId: string
+    userId: string
+    courseId: string
+    issuedAt: Date
+    _count: CertificateCountAggregateOutputType | null
+    _min: CertificateMinAggregateOutputType | null
+    _max: CertificateMaxAggregateOutputType | null
+  }
+
+  type GetCertificateGroupByPayload<T extends CertificateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CertificateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CertificateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CertificateGroupByOutputType[P]>
+            : GetScalarType<T[P], CertificateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CertificateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    enrollmentId?: boolean
+    userId?: boolean
+    courseId?: boolean
+    issuedAt?: boolean
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["certificate"]>
+
+  export type CertificateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    enrollmentId?: boolean
+    userId?: boolean
+    courseId?: boolean
+    issuedAt?: boolean
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["certificate"]>
+
+  export type CertificateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    enrollmentId?: boolean
+    userId?: boolean
+    courseId?: boolean
+    issuedAt?: boolean
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["certificate"]>
+
+  export type CertificateSelectScalar = {
+    id?: boolean
+    enrollmentId?: boolean
+    userId?: boolean
+    courseId?: boolean
+    issuedAt?: boolean
+  }
+
+  export type CertificateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "enrollmentId" | "userId" | "courseId" | "issuedAt", ExtArgs["result"]["certificate"]>
+  export type CertificateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }
+  export type CertificateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }
+  export type CertificateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    enrollment?: boolean | EnrollmentDefaultArgs<ExtArgs>
+  }
+
+  export type $CertificatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Certificate"
+    objects: {
+      enrollment: Prisma.$EnrollmentPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      enrollmentId: string
+      userId: string
+      courseId: string
+      issuedAt: Date
+    }, ExtArgs["result"]["certificate"]>
+    composites: {}
+  }
+
+  type CertificateGetPayload<S extends boolean | null | undefined | CertificateDefaultArgs> = $Result.GetResult<Prisma.$CertificatePayload, S>
+
+  type CertificateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CertificateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CertificateCountAggregateInputType | true
+    }
+
+  export interface CertificateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Certificate'], meta: { name: 'Certificate' } }
+    /**
+     * Find zero or one Certificate that matches the filter.
+     * @param {CertificateFindUniqueArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CertificateFindUniqueArgs>(args: SelectSubset<T, CertificateFindUniqueArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Certificate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CertificateFindUniqueOrThrowArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CertificateFindUniqueOrThrowArgs>(args: SelectSubset<T, CertificateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Certificate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateFindFirstArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CertificateFindFirstArgs>(args?: SelectSubset<T, CertificateFindFirstArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Certificate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateFindFirstOrThrowArgs} args - Arguments to find a Certificate
+     * @example
+     * // Get one Certificate
+     * const certificate = await prisma.certificate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CertificateFindFirstOrThrowArgs>(args?: SelectSubset<T, CertificateFindFirstOrThrowArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Certificates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Certificates
+     * const certificates = await prisma.certificate.findMany()
+     * 
+     * // Get first 10 Certificates
+     * const certificates = await prisma.certificate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const certificateWithIdOnly = await prisma.certificate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CertificateFindManyArgs>(args?: SelectSubset<T, CertificateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Certificate.
+     * @param {CertificateCreateArgs} args - Arguments to create a Certificate.
+     * @example
+     * // Create one Certificate
+     * const Certificate = await prisma.certificate.create({
+     *   data: {
+     *     // ... data to create a Certificate
+     *   }
+     * })
+     * 
+     */
+    create<T extends CertificateCreateArgs>(args: SelectSubset<T, CertificateCreateArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Certificates.
+     * @param {CertificateCreateManyArgs} args - Arguments to create many Certificates.
+     * @example
+     * // Create many Certificates
+     * const certificate = await prisma.certificate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CertificateCreateManyArgs>(args?: SelectSubset<T, CertificateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Certificates and returns the data saved in the database.
+     * @param {CertificateCreateManyAndReturnArgs} args - Arguments to create many Certificates.
+     * @example
+     * // Create many Certificates
+     * const certificate = await prisma.certificate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Certificates and only return the `id`
+     * const certificateWithIdOnly = await prisma.certificate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CertificateCreateManyAndReturnArgs>(args?: SelectSubset<T, CertificateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Certificate.
+     * @param {CertificateDeleteArgs} args - Arguments to delete one Certificate.
+     * @example
+     * // Delete one Certificate
+     * const Certificate = await prisma.certificate.delete({
+     *   where: {
+     *     // ... filter to delete one Certificate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CertificateDeleteArgs>(args: SelectSubset<T, CertificateDeleteArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Certificate.
+     * @param {CertificateUpdateArgs} args - Arguments to update one Certificate.
+     * @example
+     * // Update one Certificate
+     * const certificate = await prisma.certificate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CertificateUpdateArgs>(args: SelectSubset<T, CertificateUpdateArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Certificates.
+     * @param {CertificateDeleteManyArgs} args - Arguments to filter Certificates to delete.
+     * @example
+     * // Delete a few Certificates
+     * const { count } = await prisma.certificate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CertificateDeleteManyArgs>(args?: SelectSubset<T, CertificateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Certificates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Certificates
+     * const certificate = await prisma.certificate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CertificateUpdateManyArgs>(args: SelectSubset<T, CertificateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Certificates and returns the data updated in the database.
+     * @param {CertificateUpdateManyAndReturnArgs} args - Arguments to update many Certificates.
+     * @example
+     * // Update many Certificates
+     * const certificate = await prisma.certificate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Certificates and only return the `id`
+     * const certificateWithIdOnly = await prisma.certificate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CertificateUpdateManyAndReturnArgs>(args: SelectSubset<T, CertificateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Certificate.
+     * @param {CertificateUpsertArgs} args - Arguments to update or create a Certificate.
+     * @example
+     * // Update or create a Certificate
+     * const certificate = await prisma.certificate.upsert({
+     *   create: {
+     *     // ... data to create a Certificate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Certificate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CertificateUpsertArgs>(args: SelectSubset<T, CertificateUpsertArgs<ExtArgs>>): Prisma__CertificateClient<$Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Certificates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateCountArgs} args - Arguments to filter Certificates to count.
+     * @example
+     * // Count the number of Certificates
+     * const count = await prisma.certificate.count({
+     *   where: {
+     *     // ... the filter for the Certificates we want to count
+     *   }
+     * })
+    **/
+    count<T extends CertificateCountArgs>(
+      args?: Subset<T, CertificateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CertificateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Certificate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CertificateAggregateArgs>(args: Subset<T, CertificateAggregateArgs>): Prisma.PrismaPromise<GetCertificateAggregateType<T>>
+
+    /**
+     * Group by Certificate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CertificateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CertificateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CertificateGroupByArgs['orderBy'] }
+        : { orderBy?: CertificateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CertificateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCertificateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Certificate model
+   */
+  readonly fields: CertificateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Certificate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CertificateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    enrollment<T extends EnrollmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EnrollmentDefaultArgs<ExtArgs>>): Prisma__EnrollmentClient<$Result.GetResult<Prisma.$EnrollmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Certificate model
+   */
+  interface CertificateFieldRefs {
+    readonly id: FieldRef<"Certificate", 'String'>
+    readonly enrollmentId: FieldRef<"Certificate", 'String'>
+    readonly userId: FieldRef<"Certificate", 'String'>
+    readonly courseId: FieldRef<"Certificate", 'String'>
+    readonly issuedAt: FieldRef<"Certificate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Certificate findUnique
+   */
+  export type CertificateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate findUniqueOrThrow
+   */
+  export type CertificateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate findFirst
+   */
+  export type CertificateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Certificates.
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Certificates.
+     */
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Certificate findFirstOrThrow
+   */
+  export type CertificateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificate to fetch.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Certificates.
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Certificates.
+     */
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Certificate findMany
+   */
+  export type CertificateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter, which Certificates to fetch.
+     */
+    where?: CertificateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Certificates to fetch.
+     */
+    orderBy?: CertificateOrderByWithRelationInput | CertificateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Certificates.
+     */
+    cursor?: CertificateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Certificates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Certificates.
+     */
+    skip?: number
+    distinct?: CertificateScalarFieldEnum | CertificateScalarFieldEnum[]
+  }
+
+  /**
+   * Certificate create
+   */
+  export type CertificateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Certificate.
+     */
+    data: XOR<CertificateCreateInput, CertificateUncheckedCreateInput>
+  }
+
+  /**
+   * Certificate createMany
+   */
+  export type CertificateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Certificates.
+     */
+    data: CertificateCreateManyInput | CertificateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Certificate createManyAndReturn
+   */
+  export type CertificateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * The data used to create many Certificates.
+     */
+    data: CertificateCreateManyInput | CertificateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Certificate update
+   */
+  export type CertificateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Certificate.
+     */
+    data: XOR<CertificateUpdateInput, CertificateUncheckedUpdateInput>
+    /**
+     * Choose, which Certificate to update.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate updateMany
+   */
+  export type CertificateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Certificates.
+     */
+    data: XOR<CertificateUpdateManyMutationInput, CertificateUncheckedUpdateManyInput>
+    /**
+     * Filter which Certificates to update
+     */
+    where?: CertificateWhereInput
+    /**
+     * Limit how many Certificates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Certificate updateManyAndReturn
+   */
+  export type CertificateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * The data used to update Certificates.
+     */
+    data: XOR<CertificateUpdateManyMutationInput, CertificateUncheckedUpdateManyInput>
+    /**
+     * Filter which Certificates to update
+     */
+    where?: CertificateWhereInput
+    /**
+     * Limit how many Certificates to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Certificate upsert
+   */
+  export type CertificateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Certificate to update in case it exists.
+     */
+    where: CertificateWhereUniqueInput
+    /**
+     * In case the Certificate found by the `where` argument doesn't exist, create a new Certificate with this data.
+     */
+    create: XOR<CertificateCreateInput, CertificateUncheckedCreateInput>
+    /**
+     * In case the Certificate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CertificateUpdateInput, CertificateUncheckedUpdateInput>
+  }
+
+  /**
+   * Certificate delete
+   */
+  export type CertificateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+    /**
+     * Filter which Certificate to delete.
+     */
+    where: CertificateWhereUniqueInput
+  }
+
+  /**
+   * Certificate deleteMany
+   */
+  export type CertificateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Certificates to delete
+     */
+    where?: CertificateWhereInput
+    /**
+     * Limit how many Certificates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Certificate without action
+   */
+  export type CertificateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Certificate
+     */
+    select?: CertificateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Certificate
+     */
+    omit?: CertificateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CertificateInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -10698,8 +13114,8 @@ export namespace Prisma {
     courseId: 'courseId',
     status: 'status',
     progress: 'progress',
-    enrolledAt: 'enrolledAt',
-    completedAt: 'completedAt'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type EnrollmentScalarFieldEnum = (typeof EnrollmentScalarFieldEnum)[keyof typeof EnrollmentScalarFieldEnum]
@@ -10725,6 +13141,28 @@ export namespace Prisma {
   };
 
   export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
+
+
+  export const VideoProgressScalarFieldEnum: {
+    id: 'id',
+    enrollmentId: 'enrollmentId',
+    videoIndex: 'videoIndex',
+    watched: 'watched',
+    watchedAt: 'watchedAt'
+  };
+
+  export type VideoProgressScalarFieldEnum = (typeof VideoProgressScalarFieldEnum)[keyof typeof VideoProgressScalarFieldEnum]
+
+
+  export const CertificateScalarFieldEnum: {
+    id: 'id',
+    enrollmentId: 'enrollmentId',
+    userId: 'userId',
+    courseId: 'courseId',
+    issuedAt: 'issuedAt'
+  };
+
+  export type CertificateScalarFieldEnum = (typeof CertificateScalarFieldEnum)[keyof typeof CertificateScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -11235,10 +13673,12 @@ export namespace Prisma {
     courseId?: StringFilter<"Enrollment"> | string
     status?: EnumEnrollmentStatusFilter<"Enrollment"> | $Enums.EnrollmentStatus
     progress?: IntFilter<"Enrollment"> | number
-    enrolledAt?: DateTimeFilter<"Enrollment"> | Date | string
-    completedAt?: DateTimeNullableFilter<"Enrollment"> | Date | string | null
+    createdAt?: DateTimeFilter<"Enrollment"> | Date | string
+    updatedAt?: DateTimeFilter<"Enrollment"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
+    videoProgress?: VideoProgressListRelationFilter
+    certificate?: XOR<CertificateNullableScalarRelationFilter, CertificateWhereInput> | null
   }
 
   export type EnrollmentOrderByWithRelationInput = {
@@ -11247,10 +13687,12 @@ export namespace Prisma {
     courseId?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    enrolledAt?: SortOrder
-    completedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     course?: CourseOrderByWithRelationInput
+    videoProgress?: VideoProgressOrderByRelationAggregateInput
+    certificate?: CertificateOrderByWithRelationInput
   }
 
   export type EnrollmentWhereUniqueInput = Prisma.AtLeast<{
@@ -11263,10 +13705,12 @@ export namespace Prisma {
     courseId?: StringFilter<"Enrollment"> | string
     status?: EnumEnrollmentStatusFilter<"Enrollment"> | $Enums.EnrollmentStatus
     progress?: IntFilter<"Enrollment"> | number
-    enrolledAt?: DateTimeFilter<"Enrollment"> | Date | string
-    completedAt?: DateTimeNullableFilter<"Enrollment"> | Date | string | null
+    createdAt?: DateTimeFilter<"Enrollment"> | Date | string
+    updatedAt?: DateTimeFilter<"Enrollment"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     course?: XOR<CourseScalarRelationFilter, CourseWhereInput>
+    videoProgress?: VideoProgressListRelationFilter
+    certificate?: XOR<CertificateNullableScalarRelationFilter, CertificateWhereInput> | null
   }, "id" | "userId_courseId">
 
   export type EnrollmentOrderByWithAggregationInput = {
@@ -11275,8 +13719,8 @@ export namespace Prisma {
     courseId?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    enrolledAt?: SortOrder
-    completedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: EnrollmentCountOrderByAggregateInput
     _avg?: EnrollmentAvgOrderByAggregateInput
     _max?: EnrollmentMaxOrderByAggregateInput
@@ -11293,8 +13737,8 @@ export namespace Prisma {
     courseId?: StringWithAggregatesFilter<"Enrollment"> | string
     status?: EnumEnrollmentStatusWithAggregatesFilter<"Enrollment"> | $Enums.EnrollmentStatus
     progress?: IntWithAggregatesFilter<"Enrollment"> | number
-    enrolledAt?: DateTimeWithAggregatesFilter<"Enrollment"> | Date | string
-    completedAt?: DateTimeNullableWithAggregatesFilter<"Enrollment"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Enrollment"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Enrollment"> | Date | string
   }
 
   export type BalanceWhereInput = {
@@ -11409,6 +13853,119 @@ export namespace Prisma {
     amount?: FloatWithAggregatesFilter<"Transaction"> | number
     description?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
+  }
+
+  export type VideoProgressWhereInput = {
+    AND?: VideoProgressWhereInput | VideoProgressWhereInput[]
+    OR?: VideoProgressWhereInput[]
+    NOT?: VideoProgressWhereInput | VideoProgressWhereInput[]
+    id?: StringFilter<"VideoProgress"> | string
+    enrollmentId?: StringFilter<"VideoProgress"> | string
+    videoIndex?: IntFilter<"VideoProgress"> | number
+    watched?: BoolFilter<"VideoProgress"> | boolean
+    watchedAt?: DateTimeNullableFilter<"VideoProgress"> | Date | string | null
+    enrollment?: XOR<EnrollmentScalarRelationFilter, EnrollmentWhereInput>
+  }
+
+  export type VideoProgressOrderByWithRelationInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    videoIndex?: SortOrder
+    watched?: SortOrder
+    watchedAt?: SortOrderInput | SortOrder
+    enrollment?: EnrollmentOrderByWithRelationInput
+  }
+
+  export type VideoProgressWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    enrollmentId_videoIndex?: VideoProgressEnrollmentIdVideoIndexCompoundUniqueInput
+    AND?: VideoProgressWhereInput | VideoProgressWhereInput[]
+    OR?: VideoProgressWhereInput[]
+    NOT?: VideoProgressWhereInput | VideoProgressWhereInput[]
+    enrollmentId?: StringFilter<"VideoProgress"> | string
+    videoIndex?: IntFilter<"VideoProgress"> | number
+    watched?: BoolFilter<"VideoProgress"> | boolean
+    watchedAt?: DateTimeNullableFilter<"VideoProgress"> | Date | string | null
+    enrollment?: XOR<EnrollmentScalarRelationFilter, EnrollmentWhereInput>
+  }, "id" | "enrollmentId_videoIndex">
+
+  export type VideoProgressOrderByWithAggregationInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    videoIndex?: SortOrder
+    watched?: SortOrder
+    watchedAt?: SortOrderInput | SortOrder
+    _count?: VideoProgressCountOrderByAggregateInput
+    _avg?: VideoProgressAvgOrderByAggregateInput
+    _max?: VideoProgressMaxOrderByAggregateInput
+    _min?: VideoProgressMinOrderByAggregateInput
+    _sum?: VideoProgressSumOrderByAggregateInput
+  }
+
+  export type VideoProgressScalarWhereWithAggregatesInput = {
+    AND?: VideoProgressScalarWhereWithAggregatesInput | VideoProgressScalarWhereWithAggregatesInput[]
+    OR?: VideoProgressScalarWhereWithAggregatesInput[]
+    NOT?: VideoProgressScalarWhereWithAggregatesInput | VideoProgressScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"VideoProgress"> | string
+    enrollmentId?: StringWithAggregatesFilter<"VideoProgress"> | string
+    videoIndex?: IntWithAggregatesFilter<"VideoProgress"> | number
+    watched?: BoolWithAggregatesFilter<"VideoProgress"> | boolean
+    watchedAt?: DateTimeNullableWithAggregatesFilter<"VideoProgress"> | Date | string | null
+  }
+
+  export type CertificateWhereInput = {
+    AND?: CertificateWhereInput | CertificateWhereInput[]
+    OR?: CertificateWhereInput[]
+    NOT?: CertificateWhereInput | CertificateWhereInput[]
+    id?: StringFilter<"Certificate"> | string
+    enrollmentId?: StringFilter<"Certificate"> | string
+    userId?: StringFilter<"Certificate"> | string
+    courseId?: StringFilter<"Certificate"> | string
+    issuedAt?: DateTimeFilter<"Certificate"> | Date | string
+    enrollment?: XOR<EnrollmentScalarRelationFilter, EnrollmentWhereInput>
+  }
+
+  export type CertificateOrderByWithRelationInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    userId?: SortOrder
+    courseId?: SortOrder
+    issuedAt?: SortOrder
+    enrollment?: EnrollmentOrderByWithRelationInput
+  }
+
+  export type CertificateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    enrollmentId?: string
+    AND?: CertificateWhereInput | CertificateWhereInput[]
+    OR?: CertificateWhereInput[]
+    NOT?: CertificateWhereInput | CertificateWhereInput[]
+    userId?: StringFilter<"Certificate"> | string
+    courseId?: StringFilter<"Certificate"> | string
+    issuedAt?: DateTimeFilter<"Certificate"> | Date | string
+    enrollment?: XOR<EnrollmentScalarRelationFilter, EnrollmentWhereInput>
+  }, "id" | "enrollmentId">
+
+  export type CertificateOrderByWithAggregationInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    userId?: SortOrder
+    courseId?: SortOrder
+    issuedAt?: SortOrder
+    _count?: CertificateCountOrderByAggregateInput
+    _max?: CertificateMaxOrderByAggregateInput
+    _min?: CertificateMinOrderByAggregateInput
+  }
+
+  export type CertificateScalarWhereWithAggregatesInput = {
+    AND?: CertificateScalarWhereWithAggregatesInput | CertificateScalarWhereWithAggregatesInput[]
+    OR?: CertificateScalarWhereWithAggregatesInput[]
+    NOT?: CertificateScalarWhereWithAggregatesInput | CertificateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Certificate"> | string
+    enrollmentId?: StringWithAggregatesFilter<"Certificate"> | string
+    userId?: StringWithAggregatesFilter<"Certificate"> | string
+    courseId?: StringWithAggregatesFilter<"Certificate"> | string
+    issuedAt?: DateTimeWithAggregatesFilter<"Certificate"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -11818,10 +14375,12 @@ export namespace Prisma {
     id?: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutEnrollmentsInput
     course: CourseCreateNestedOneWithoutEnrollmentsInput
+    videoProgress?: VideoProgressCreateNestedManyWithoutEnrollmentInput
+    certificate?: CertificateCreateNestedOneWithoutEnrollmentInput
   }
 
   export type EnrollmentUncheckedCreateInput = {
@@ -11830,18 +14389,22 @@ export namespace Prisma {
     courseId: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videoProgress?: VideoProgressUncheckedCreateNestedManyWithoutEnrollmentInput
+    certificate?: CertificateUncheckedCreateNestedOneWithoutEnrollmentInput
   }
 
   export type EnrollmentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutEnrollmentsNestedInput
     course?: CourseUpdateOneRequiredWithoutEnrollmentsNestedInput
+    videoProgress?: VideoProgressUpdateManyWithoutEnrollmentNestedInput
+    certificate?: CertificateUpdateOneWithoutEnrollmentNestedInput
   }
 
   export type EnrollmentUncheckedUpdateInput = {
@@ -11850,8 +14413,10 @@ export namespace Prisma {
     courseId?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videoProgress?: VideoProgressUncheckedUpdateManyWithoutEnrollmentNestedInput
+    certificate?: CertificateUncheckedUpdateOneWithoutEnrollmentNestedInput
   }
 
   export type EnrollmentCreateManyInput = {
@@ -11860,16 +14425,16 @@ export namespace Prisma {
     courseId: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EnrollmentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EnrollmentUncheckedUpdateManyInput = {
@@ -11878,8 +14443,8 @@ export namespace Prisma {
     courseId?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BalanceCreateInput = {
@@ -11990,6 +14555,116 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VideoProgressCreateInput = {
+    id?: string
+    videoIndex: number
+    watched?: boolean
+    watchedAt?: Date | string | null
+    enrollment: EnrollmentCreateNestedOneWithoutVideoProgressInput
+  }
+
+  export type VideoProgressUncheckedCreateInput = {
+    id?: string
+    enrollmentId: string
+    videoIndex: number
+    watched?: boolean
+    watchedAt?: Date | string | null
+  }
+
+  export type VideoProgressUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    videoIndex?: IntFieldUpdateOperationsInput | number
+    watched?: BoolFieldUpdateOperationsInput | boolean
+    watchedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    enrollment?: EnrollmentUpdateOneRequiredWithoutVideoProgressNestedInput
+  }
+
+  export type VideoProgressUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    enrollmentId?: StringFieldUpdateOperationsInput | string
+    videoIndex?: IntFieldUpdateOperationsInput | number
+    watched?: BoolFieldUpdateOperationsInput | boolean
+    watchedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VideoProgressCreateManyInput = {
+    id?: string
+    enrollmentId: string
+    videoIndex: number
+    watched?: boolean
+    watchedAt?: Date | string | null
+  }
+
+  export type VideoProgressUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    videoIndex?: IntFieldUpdateOperationsInput | number
+    watched?: BoolFieldUpdateOperationsInput | boolean
+    watchedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VideoProgressUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    enrollmentId?: StringFieldUpdateOperationsInput | string
+    videoIndex?: IntFieldUpdateOperationsInput | number
+    watched?: BoolFieldUpdateOperationsInput | boolean
+    watchedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CertificateCreateInput = {
+    id?: string
+    userId: string
+    courseId: string
+    issuedAt?: Date | string
+    enrollment: EnrollmentCreateNestedOneWithoutCertificateInput
+  }
+
+  export type CertificateUncheckedCreateInput = {
+    id?: string
+    enrollmentId: string
+    userId: string
+    courseId: string
+    issuedAt?: Date | string
+  }
+
+  export type CertificateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    issuedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    enrollment?: EnrollmentUpdateOneRequiredWithoutCertificateNestedInput
+  }
+
+  export type CertificateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    enrollmentId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    issuedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateCreateManyInput = {
+    id?: string
+    enrollmentId: string
+    userId: string
+    courseId: string
+    issuedAt?: Date | string
+  }
+
+  export type CertificateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    issuedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    enrollmentId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    issuedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -12399,20 +15074,24 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type CourseScalarRelationFilter = {
     is?: CourseWhereInput
     isNot?: CourseWhereInput
+  }
+
+  export type VideoProgressListRelationFilter = {
+    every?: VideoProgressWhereInput
+    some?: VideoProgressWhereInput
+    none?: VideoProgressWhereInput
+  }
+
+  export type CertificateNullableScalarRelationFilter = {
+    is?: CertificateWhereInput | null
+    isNot?: CertificateWhereInput | null
+  }
+
+  export type VideoProgressOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type EnrollmentUserIdCourseIdCompoundUniqueInput = {
@@ -12426,8 +15105,8 @@ export namespace Prisma {
     courseId?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    enrolledAt?: SortOrder
-    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EnrollmentAvgOrderByAggregateInput = {
@@ -12440,8 +15119,8 @@ export namespace Prisma {
     courseId?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    enrolledAt?: SortOrder
-    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EnrollmentMinOrderByAggregateInput = {
@@ -12450,8 +15129,8 @@ export namespace Prisma {
     courseId?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    enrolledAt?: SortOrder
-    completedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EnrollmentSumOrderByAggregateInput = {
@@ -12482,20 +15161,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type BalanceCountOrderByAggregateInput = {
@@ -12577,6 +15242,97 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTransactionTypeFilter<$PrismaModel>
     _max?: NestedEnumTransactionTypeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type EnrollmentScalarRelationFilter = {
+    is?: EnrollmentWhereInput
+    isNot?: EnrollmentWhereInput
+  }
+
+  export type VideoProgressEnrollmentIdVideoIndexCompoundUniqueInput = {
+    enrollmentId: string
+    videoIndex: number
+  }
+
+  export type VideoProgressCountOrderByAggregateInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    videoIndex?: SortOrder
+    watched?: SortOrder
+    watchedAt?: SortOrder
+  }
+
+  export type VideoProgressAvgOrderByAggregateInput = {
+    videoIndex?: SortOrder
+  }
+
+  export type VideoProgressMaxOrderByAggregateInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    videoIndex?: SortOrder
+    watched?: SortOrder
+    watchedAt?: SortOrder
+  }
+
+  export type VideoProgressMinOrderByAggregateInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    videoIndex?: SortOrder
+    watched?: SortOrder
+    watchedAt?: SortOrder
+  }
+
+  export type VideoProgressSumOrderByAggregateInput = {
+    videoIndex?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type CertificateCountOrderByAggregateInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    userId?: SortOrder
+    courseId?: SortOrder
+    issuedAt?: SortOrder
+  }
+
+  export type CertificateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    userId?: SortOrder
+    courseId?: SortOrder
+    issuedAt?: SortOrder
+  }
+
+  export type CertificateMinOrderByAggregateInput = {
+    id?: SortOrder
+    enrollmentId?: SortOrder
+    userId?: SortOrder
+    courseId?: SortOrder
+    issuedAt?: SortOrder
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -12954,6 +15710,32 @@ export namespace Prisma {
     connect?: CourseWhereUniqueInput
   }
 
+  export type VideoProgressCreateNestedManyWithoutEnrollmentInput = {
+    create?: XOR<VideoProgressCreateWithoutEnrollmentInput, VideoProgressUncheckedCreateWithoutEnrollmentInput> | VideoProgressCreateWithoutEnrollmentInput[] | VideoProgressUncheckedCreateWithoutEnrollmentInput[]
+    connectOrCreate?: VideoProgressCreateOrConnectWithoutEnrollmentInput | VideoProgressCreateOrConnectWithoutEnrollmentInput[]
+    createMany?: VideoProgressCreateManyEnrollmentInputEnvelope
+    connect?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+  }
+
+  export type CertificateCreateNestedOneWithoutEnrollmentInput = {
+    create?: XOR<CertificateCreateWithoutEnrollmentInput, CertificateUncheckedCreateWithoutEnrollmentInput>
+    connectOrCreate?: CertificateCreateOrConnectWithoutEnrollmentInput
+    connect?: CertificateWhereUniqueInput
+  }
+
+  export type VideoProgressUncheckedCreateNestedManyWithoutEnrollmentInput = {
+    create?: XOR<VideoProgressCreateWithoutEnrollmentInput, VideoProgressUncheckedCreateWithoutEnrollmentInput> | VideoProgressCreateWithoutEnrollmentInput[] | VideoProgressUncheckedCreateWithoutEnrollmentInput[]
+    connectOrCreate?: VideoProgressCreateOrConnectWithoutEnrollmentInput | VideoProgressCreateOrConnectWithoutEnrollmentInput[]
+    createMany?: VideoProgressCreateManyEnrollmentInputEnvelope
+    connect?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+  }
+
+  export type CertificateUncheckedCreateNestedOneWithoutEnrollmentInput = {
+    create?: XOR<CertificateCreateWithoutEnrollmentInput, CertificateUncheckedCreateWithoutEnrollmentInput>
+    connectOrCreate?: CertificateCreateOrConnectWithoutEnrollmentInput
+    connect?: CertificateWhereUniqueInput
+  }
+
   export type EnumEnrollmentStatusFieldUpdateOperationsInput = {
     set?: $Enums.EnrollmentStatus
   }
@@ -12964,10 +15746,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type UserUpdateOneRequiredWithoutEnrollmentsNestedInput = {
@@ -12984,6 +15762,54 @@ export namespace Prisma {
     upsert?: CourseUpsertWithoutEnrollmentsInput
     connect?: CourseWhereUniqueInput
     update?: XOR<XOR<CourseUpdateToOneWithWhereWithoutEnrollmentsInput, CourseUpdateWithoutEnrollmentsInput>, CourseUncheckedUpdateWithoutEnrollmentsInput>
+  }
+
+  export type VideoProgressUpdateManyWithoutEnrollmentNestedInput = {
+    create?: XOR<VideoProgressCreateWithoutEnrollmentInput, VideoProgressUncheckedCreateWithoutEnrollmentInput> | VideoProgressCreateWithoutEnrollmentInput[] | VideoProgressUncheckedCreateWithoutEnrollmentInput[]
+    connectOrCreate?: VideoProgressCreateOrConnectWithoutEnrollmentInput | VideoProgressCreateOrConnectWithoutEnrollmentInput[]
+    upsert?: VideoProgressUpsertWithWhereUniqueWithoutEnrollmentInput | VideoProgressUpsertWithWhereUniqueWithoutEnrollmentInput[]
+    createMany?: VideoProgressCreateManyEnrollmentInputEnvelope
+    set?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    disconnect?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    delete?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    connect?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    update?: VideoProgressUpdateWithWhereUniqueWithoutEnrollmentInput | VideoProgressUpdateWithWhereUniqueWithoutEnrollmentInput[]
+    updateMany?: VideoProgressUpdateManyWithWhereWithoutEnrollmentInput | VideoProgressUpdateManyWithWhereWithoutEnrollmentInput[]
+    deleteMany?: VideoProgressScalarWhereInput | VideoProgressScalarWhereInput[]
+  }
+
+  export type CertificateUpdateOneWithoutEnrollmentNestedInput = {
+    create?: XOR<CertificateCreateWithoutEnrollmentInput, CertificateUncheckedCreateWithoutEnrollmentInput>
+    connectOrCreate?: CertificateCreateOrConnectWithoutEnrollmentInput
+    upsert?: CertificateUpsertWithoutEnrollmentInput
+    disconnect?: CertificateWhereInput | boolean
+    delete?: CertificateWhereInput | boolean
+    connect?: CertificateWhereUniqueInput
+    update?: XOR<XOR<CertificateUpdateToOneWithWhereWithoutEnrollmentInput, CertificateUpdateWithoutEnrollmentInput>, CertificateUncheckedUpdateWithoutEnrollmentInput>
+  }
+
+  export type VideoProgressUncheckedUpdateManyWithoutEnrollmentNestedInput = {
+    create?: XOR<VideoProgressCreateWithoutEnrollmentInput, VideoProgressUncheckedCreateWithoutEnrollmentInput> | VideoProgressCreateWithoutEnrollmentInput[] | VideoProgressUncheckedCreateWithoutEnrollmentInput[]
+    connectOrCreate?: VideoProgressCreateOrConnectWithoutEnrollmentInput | VideoProgressCreateOrConnectWithoutEnrollmentInput[]
+    upsert?: VideoProgressUpsertWithWhereUniqueWithoutEnrollmentInput | VideoProgressUpsertWithWhereUniqueWithoutEnrollmentInput[]
+    createMany?: VideoProgressCreateManyEnrollmentInputEnvelope
+    set?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    disconnect?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    delete?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    connect?: VideoProgressWhereUniqueInput | VideoProgressWhereUniqueInput[]
+    update?: VideoProgressUpdateWithWhereUniqueWithoutEnrollmentInput | VideoProgressUpdateWithWhereUniqueWithoutEnrollmentInput[]
+    updateMany?: VideoProgressUpdateManyWithWhereWithoutEnrollmentInput | VideoProgressUpdateManyWithWhereWithoutEnrollmentInput[]
+    deleteMany?: VideoProgressScalarWhereInput | VideoProgressScalarWhereInput[]
+  }
+
+  export type CertificateUncheckedUpdateOneWithoutEnrollmentNestedInput = {
+    create?: XOR<CertificateCreateWithoutEnrollmentInput, CertificateUncheckedCreateWithoutEnrollmentInput>
+    connectOrCreate?: CertificateCreateOrConnectWithoutEnrollmentInput
+    upsert?: CertificateUpsertWithoutEnrollmentInput
+    disconnect?: CertificateWhereInput | boolean
+    delete?: CertificateWhereInput | boolean
+    connect?: CertificateWhereUniqueInput
+    update?: XOR<XOR<CertificateUpdateToOneWithWhereWithoutEnrollmentInput, CertificateUpdateWithoutEnrollmentInput>, CertificateUncheckedUpdateWithoutEnrollmentInput>
   }
 
   export type UserCreateNestedOneWithoutBalanceInput = {
@@ -13016,6 +15842,38 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutTransactionsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTransactionsInput, UserUpdateWithoutTransactionsInput>, UserUncheckedUpdateWithoutTransactionsInput>
+  }
+
+  export type EnrollmentCreateNestedOneWithoutVideoProgressInput = {
+    create?: XOR<EnrollmentCreateWithoutVideoProgressInput, EnrollmentUncheckedCreateWithoutVideoProgressInput>
+    connectOrCreate?: EnrollmentCreateOrConnectWithoutVideoProgressInput
+    connect?: EnrollmentWhereUniqueInput
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type EnrollmentUpdateOneRequiredWithoutVideoProgressNestedInput = {
+    create?: XOR<EnrollmentCreateWithoutVideoProgressInput, EnrollmentUncheckedCreateWithoutVideoProgressInput>
+    connectOrCreate?: EnrollmentCreateOrConnectWithoutVideoProgressInput
+    upsert?: EnrollmentUpsertWithoutVideoProgressInput
+    connect?: EnrollmentWhereUniqueInput
+    update?: XOR<XOR<EnrollmentUpdateToOneWithWhereWithoutVideoProgressInput, EnrollmentUpdateWithoutVideoProgressInput>, EnrollmentUncheckedUpdateWithoutVideoProgressInput>
+  }
+
+  export type EnrollmentCreateNestedOneWithoutCertificateInput = {
+    create?: XOR<EnrollmentCreateWithoutCertificateInput, EnrollmentUncheckedCreateWithoutCertificateInput>
+    connectOrCreate?: EnrollmentCreateOrConnectWithoutCertificateInput
+    connect?: EnrollmentWhereUniqueInput
+  }
+
+  export type EnrollmentUpdateOneRequiredWithoutCertificateNestedInput = {
+    create?: XOR<EnrollmentCreateWithoutCertificateInput, EnrollmentUncheckedCreateWithoutCertificateInput>
+    connectOrCreate?: EnrollmentCreateOrConnectWithoutCertificateInput
+    upsert?: EnrollmentUpsertWithoutCertificateInput
+    connect?: EnrollmentWhereUniqueInput
+    update?: XOR<XOR<EnrollmentUpdateToOneWithWhereWithoutCertificateInput, EnrollmentUpdateWithoutCertificateInput>, EnrollmentUncheckedUpdateWithoutCertificateInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13191,17 +16049,6 @@ export namespace Prisma {
     not?: NestedEnumEnrollmentStatusFilter<$PrismaModel> | $Enums.EnrollmentStatus
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedEnumEnrollmentStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.EnrollmentStatus | EnumEnrollmentStatusFieldRefInput<$PrismaModel>
     in?: $Enums.EnrollmentStatus[] | ListEnumEnrollmentStatusFieldRefInput<$PrismaModel>
@@ -13228,20 +16075,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type NestedEnumTransactionTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.TransactionType | EnumTransactionTypeFieldRefInput<$PrismaModel>
     in?: $Enums.TransactionType[] | ListEnumTransactionTypeFieldRefInput<$PrismaModel>
@@ -13257,6 +16090,31 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTransactionTypeFilter<$PrismaModel>
     _max?: NestedEnumTransactionTypeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type SessionCreateWithoutUserInput = {
@@ -13339,9 +16197,11 @@ export namespace Prisma {
     id?: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     course: CourseCreateNestedOneWithoutEnrollmentsInput
+    videoProgress?: VideoProgressCreateNestedManyWithoutEnrollmentInput
+    certificate?: CertificateCreateNestedOneWithoutEnrollmentInput
   }
 
   export type EnrollmentUncheckedCreateWithoutUserInput = {
@@ -13349,8 +16209,10 @@ export namespace Prisma {
     courseId: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videoProgress?: VideoProgressUncheckedCreateNestedManyWithoutEnrollmentInput
+    certificate?: CertificateUncheckedCreateNestedOneWithoutEnrollmentInput
   }
 
   export type EnrollmentCreateOrConnectWithoutUserInput = {
@@ -13514,8 +16376,8 @@ export namespace Prisma {
     courseId?: StringFilter<"Enrollment"> | string
     status?: EnumEnrollmentStatusFilter<"Enrollment"> | $Enums.EnrollmentStatus
     progress?: IntFilter<"Enrollment"> | number
-    enrolledAt?: DateTimeFilter<"Enrollment"> | Date | string
-    completedAt?: DateTimeNullableFilter<"Enrollment"> | Date | string | null
+    createdAt?: DateTimeFilter<"Enrollment"> | Date | string
+    updatedAt?: DateTimeFilter<"Enrollment"> | Date | string
   }
 
   export type BalanceUpsertWithoutUserInput = {
@@ -13837,9 +16699,11 @@ export namespace Prisma {
     id?: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutEnrollmentsInput
+    videoProgress?: VideoProgressCreateNestedManyWithoutEnrollmentInput
+    certificate?: CertificateCreateNestedOneWithoutEnrollmentInput
   }
 
   export type EnrollmentUncheckedCreateWithoutCourseInput = {
@@ -13847,8 +16711,10 @@ export namespace Prisma {
     userId: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videoProgress?: VideoProgressUncheckedCreateNestedManyWithoutEnrollmentInput
+    certificate?: CertificateUncheckedCreateNestedOneWithoutEnrollmentInput
   }
 
   export type EnrollmentCreateOrConnectWithoutCourseInput = {
@@ -13953,6 +16819,49 @@ export namespace Prisma {
     create: XOR<CourseCreateWithoutEnrollmentsInput, CourseUncheckedCreateWithoutEnrollmentsInput>
   }
 
+  export type VideoProgressCreateWithoutEnrollmentInput = {
+    id?: string
+    videoIndex: number
+    watched?: boolean
+    watchedAt?: Date | string | null
+  }
+
+  export type VideoProgressUncheckedCreateWithoutEnrollmentInput = {
+    id?: string
+    videoIndex: number
+    watched?: boolean
+    watchedAt?: Date | string | null
+  }
+
+  export type VideoProgressCreateOrConnectWithoutEnrollmentInput = {
+    where: VideoProgressWhereUniqueInput
+    create: XOR<VideoProgressCreateWithoutEnrollmentInput, VideoProgressUncheckedCreateWithoutEnrollmentInput>
+  }
+
+  export type VideoProgressCreateManyEnrollmentInputEnvelope = {
+    data: VideoProgressCreateManyEnrollmentInput | VideoProgressCreateManyEnrollmentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CertificateCreateWithoutEnrollmentInput = {
+    id?: string
+    userId: string
+    courseId: string
+    issuedAt?: Date | string
+  }
+
+  export type CertificateUncheckedCreateWithoutEnrollmentInput = {
+    id?: string
+    userId: string
+    courseId: string
+    issuedAt?: Date | string
+  }
+
+  export type CertificateCreateOrConnectWithoutEnrollmentInput = {
+    where: CertificateWhereUniqueInput
+    create: XOR<CertificateCreateWithoutEnrollmentInput, CertificateUncheckedCreateWithoutEnrollmentInput>
+  }
+
   export type UserUpsertWithoutEnrollmentsInput = {
     update: XOR<UserUpdateWithoutEnrollmentsInput, UserUncheckedUpdateWithoutEnrollmentsInput>
     create: XOR<UserCreateWithoutEnrollmentsInput, UserUncheckedCreateWithoutEnrollmentsInput>
@@ -14039,6 +16948,58 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoProgressUpsertWithWhereUniqueWithoutEnrollmentInput = {
+    where: VideoProgressWhereUniqueInput
+    update: XOR<VideoProgressUpdateWithoutEnrollmentInput, VideoProgressUncheckedUpdateWithoutEnrollmentInput>
+    create: XOR<VideoProgressCreateWithoutEnrollmentInput, VideoProgressUncheckedCreateWithoutEnrollmentInput>
+  }
+
+  export type VideoProgressUpdateWithWhereUniqueWithoutEnrollmentInput = {
+    where: VideoProgressWhereUniqueInput
+    data: XOR<VideoProgressUpdateWithoutEnrollmentInput, VideoProgressUncheckedUpdateWithoutEnrollmentInput>
+  }
+
+  export type VideoProgressUpdateManyWithWhereWithoutEnrollmentInput = {
+    where: VideoProgressScalarWhereInput
+    data: XOR<VideoProgressUpdateManyMutationInput, VideoProgressUncheckedUpdateManyWithoutEnrollmentInput>
+  }
+
+  export type VideoProgressScalarWhereInput = {
+    AND?: VideoProgressScalarWhereInput | VideoProgressScalarWhereInput[]
+    OR?: VideoProgressScalarWhereInput[]
+    NOT?: VideoProgressScalarWhereInput | VideoProgressScalarWhereInput[]
+    id?: StringFilter<"VideoProgress"> | string
+    enrollmentId?: StringFilter<"VideoProgress"> | string
+    videoIndex?: IntFilter<"VideoProgress"> | number
+    watched?: BoolFilter<"VideoProgress"> | boolean
+    watchedAt?: DateTimeNullableFilter<"VideoProgress"> | Date | string | null
+  }
+
+  export type CertificateUpsertWithoutEnrollmentInput = {
+    update: XOR<CertificateUpdateWithoutEnrollmentInput, CertificateUncheckedUpdateWithoutEnrollmentInput>
+    create: XOR<CertificateCreateWithoutEnrollmentInput, CertificateUncheckedCreateWithoutEnrollmentInput>
+    where?: CertificateWhereInput
+  }
+
+  export type CertificateUpdateToOneWithWhereWithoutEnrollmentInput = {
+    where?: CertificateWhereInput
+    data: XOR<CertificateUpdateWithoutEnrollmentInput, CertificateUncheckedUpdateWithoutEnrollmentInput>
+  }
+
+  export type CertificateUpdateWithoutEnrollmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    issuedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CertificateUncheckedUpdateWithoutEnrollmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    issuedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateWithoutBalanceInput = {
@@ -14217,6 +17178,126 @@ export namespace Prisma {
     balance?: BalanceUncheckedUpdateOneWithoutUserNestedInput
   }
 
+  export type EnrollmentCreateWithoutVideoProgressInput = {
+    id?: string
+    status?: $Enums.EnrollmentStatus
+    progress?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutEnrollmentsInput
+    course: CourseCreateNestedOneWithoutEnrollmentsInput
+    certificate?: CertificateCreateNestedOneWithoutEnrollmentInput
+  }
+
+  export type EnrollmentUncheckedCreateWithoutVideoProgressInput = {
+    id?: string
+    userId: string
+    courseId: string
+    status?: $Enums.EnrollmentStatus
+    progress?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    certificate?: CertificateUncheckedCreateNestedOneWithoutEnrollmentInput
+  }
+
+  export type EnrollmentCreateOrConnectWithoutVideoProgressInput = {
+    where: EnrollmentWhereUniqueInput
+    create: XOR<EnrollmentCreateWithoutVideoProgressInput, EnrollmentUncheckedCreateWithoutVideoProgressInput>
+  }
+
+  export type EnrollmentUpsertWithoutVideoProgressInput = {
+    update: XOR<EnrollmentUpdateWithoutVideoProgressInput, EnrollmentUncheckedUpdateWithoutVideoProgressInput>
+    create: XOR<EnrollmentCreateWithoutVideoProgressInput, EnrollmentUncheckedCreateWithoutVideoProgressInput>
+    where?: EnrollmentWhereInput
+  }
+
+  export type EnrollmentUpdateToOneWithWhereWithoutVideoProgressInput = {
+    where?: EnrollmentWhereInput
+    data: XOR<EnrollmentUpdateWithoutVideoProgressInput, EnrollmentUncheckedUpdateWithoutVideoProgressInput>
+  }
+
+  export type EnrollmentUpdateWithoutVideoProgressInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
+    progress?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutEnrollmentsNestedInput
+    course?: CourseUpdateOneRequiredWithoutEnrollmentsNestedInput
+    certificate?: CertificateUpdateOneWithoutEnrollmentNestedInput
+  }
+
+  export type EnrollmentUncheckedUpdateWithoutVideoProgressInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
+    progress?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    certificate?: CertificateUncheckedUpdateOneWithoutEnrollmentNestedInput
+  }
+
+  export type EnrollmentCreateWithoutCertificateInput = {
+    id?: string
+    status?: $Enums.EnrollmentStatus
+    progress?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutEnrollmentsInput
+    course: CourseCreateNestedOneWithoutEnrollmentsInput
+    videoProgress?: VideoProgressCreateNestedManyWithoutEnrollmentInput
+  }
+
+  export type EnrollmentUncheckedCreateWithoutCertificateInput = {
+    id?: string
+    userId: string
+    courseId: string
+    status?: $Enums.EnrollmentStatus
+    progress?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videoProgress?: VideoProgressUncheckedCreateNestedManyWithoutEnrollmentInput
+  }
+
+  export type EnrollmentCreateOrConnectWithoutCertificateInput = {
+    where: EnrollmentWhereUniqueInput
+    create: XOR<EnrollmentCreateWithoutCertificateInput, EnrollmentUncheckedCreateWithoutCertificateInput>
+  }
+
+  export type EnrollmentUpsertWithoutCertificateInput = {
+    update: XOR<EnrollmentUpdateWithoutCertificateInput, EnrollmentUncheckedUpdateWithoutCertificateInput>
+    create: XOR<EnrollmentCreateWithoutCertificateInput, EnrollmentUncheckedCreateWithoutCertificateInput>
+    where?: EnrollmentWhereInput
+  }
+
+  export type EnrollmentUpdateToOneWithWhereWithoutCertificateInput = {
+    where?: EnrollmentWhereInput
+    data: XOR<EnrollmentUpdateWithoutCertificateInput, EnrollmentUncheckedUpdateWithoutCertificateInput>
+  }
+
+  export type EnrollmentUpdateWithoutCertificateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
+    progress?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutEnrollmentsNestedInput
+    course?: CourseUpdateOneRequiredWithoutEnrollmentsNestedInput
+    videoProgress?: VideoProgressUpdateManyWithoutEnrollmentNestedInput
+  }
+
+  export type EnrollmentUncheckedUpdateWithoutCertificateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courseId?: StringFieldUpdateOperationsInput | string
+    status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
+    progress?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videoProgress?: VideoProgressUncheckedUpdateManyWithoutEnrollmentNestedInput
+  }
+
   export type SessionCreateManyUserInput = {
     id?: string
     token: string
@@ -14245,8 +17326,8 @@ export namespace Prisma {
     courseId: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TransactionCreateManyUserInput = {
@@ -14330,9 +17411,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     course?: CourseUpdateOneRequiredWithoutEnrollmentsNestedInput
+    videoProgress?: VideoProgressUpdateManyWithoutEnrollmentNestedInput
+    certificate?: CertificateUpdateOneWithoutEnrollmentNestedInput
   }
 
   export type EnrollmentUncheckedUpdateWithoutUserInput = {
@@ -14340,8 +17423,10 @@ export namespace Prisma {
     courseId?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videoProgress?: VideoProgressUncheckedUpdateManyWithoutEnrollmentNestedInput
+    certificate?: CertificateUncheckedUpdateOneWithoutEnrollmentNestedInput
   }
 
   export type EnrollmentUncheckedUpdateManyWithoutUserInput = {
@@ -14349,8 +17434,8 @@ export namespace Prisma {
     courseId?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TransactionUpdateWithoutUserInput = {
@@ -14382,17 +17467,19 @@ export namespace Prisma {
     userId: string
     status?: $Enums.EnrollmentStatus
     progress?: number
-    enrolledAt?: Date | string
-    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EnrollmentUpdateWithoutCourseInput = {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutEnrollmentsNestedInput
+    videoProgress?: VideoProgressUpdateManyWithoutEnrollmentNestedInput
+    certificate?: CertificateUpdateOneWithoutEnrollmentNestedInput
   }
 
   export type EnrollmentUncheckedUpdateWithoutCourseInput = {
@@ -14400,8 +17487,10 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videoProgress?: VideoProgressUncheckedUpdateManyWithoutEnrollmentNestedInput
+    certificate?: CertificateUncheckedUpdateOneWithoutEnrollmentNestedInput
   }
 
   export type EnrollmentUncheckedUpdateManyWithoutCourseInput = {
@@ -14409,8 +17498,36 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     status?: EnumEnrollmentStatusFieldUpdateOperationsInput | $Enums.EnrollmentStatus
     progress?: IntFieldUpdateOperationsInput | number
-    enrolledAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VideoProgressCreateManyEnrollmentInput = {
+    id?: string
+    videoIndex: number
+    watched?: boolean
+    watchedAt?: Date | string | null
+  }
+
+  export type VideoProgressUpdateWithoutEnrollmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    videoIndex?: IntFieldUpdateOperationsInput | number
+    watched?: BoolFieldUpdateOperationsInput | boolean
+    watchedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VideoProgressUncheckedUpdateWithoutEnrollmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    videoIndex?: IntFieldUpdateOperationsInput | number
+    watched?: BoolFieldUpdateOperationsInput | boolean
+    watchedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type VideoProgressUncheckedUpdateManyWithoutEnrollmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    videoIndex?: IntFieldUpdateOperationsInput | number
+    watched?: BoolFieldUpdateOperationsInput | boolean
+    watchedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
